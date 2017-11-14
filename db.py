@@ -6,10 +6,6 @@
 
 
 
-
-
-
-
 #import mysql.connector
 #from   mysql.connector import errorcode
 
@@ -25,7 +21,7 @@ sys.path.append( "../rshlib" )
 #sys.path.append( "./" )
 #import logger
 
-import  parameters
+#import  parameters
 
 
 class DBAccess:
@@ -99,7 +95,7 @@ class DBAccess:
                                       passwd  = self.parameters.db_passwd,
                                           )
 
-        except Exception, e:
+        except Exception as e:
 
             self.logger.error( "got exception on connect" )
 
@@ -109,8 +105,8 @@ class DBAccess:
             self.logger.error( self.parameters.db_user )
             self.logger.error( self.parameters.db_passwd )
 
-            print "got exception on connect"
-            print e
+            print( "got exception on connect" )
+            print( e )
 
             self.db_open        = False
 
@@ -225,7 +221,7 @@ class DBAccess:
         self.last_time      = ts
         self.last_pa        = pressure
         self.last_on        = well_on
-        print " >>> add it "
+        print( " >>> add it " )
         self.dbAddRow( ts, pressure, well_on )
 
     #================================
@@ -251,7 +247,7 @@ class DBAccess:
         return
 
     # ---------------------------------------
-    def isDiff( self, another_point ):
+    def isDiff_xxxx( self, another_point ):
        """
        compare vaues to see if this is significantly different
        a bit overdone, partly for future expansion

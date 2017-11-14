@@ -64,7 +64,7 @@ if __name__ == '__main__':
     test of moving average
     """
     for period in [3, 5]:
-        print ""
+        print( "" )
         print ("\nMOVING AVERAGE (class based): PERIOD =", period)
         sma = Movingaverage(period)
         for i in range(1,6):
@@ -73,14 +73,14 @@ if __name__ == '__main__':
         for i in range(5, 0, -1):
             print ("  Next number = %-2g, SMA = %g " % (i, sma.nextVal( float(i))) )
 
-        print ""
-        print "pulse"
+        print( "" )
+        print( "pulse" )
         sma = Movingaverage(period)
         for i in [1,1,1,1,1,1,5,5,5,5,5,5,1,1,1,1]:
             print ("  Next number = %-2g, SMA = %g " % (i, sma.nextVal( float(i))) )
 
 
-        print sma
+        print( sma )
 
 # ========================= eof ========================
 

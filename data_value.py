@@ -118,27 +118,27 @@ if __name__ == '__main__':
         test.set_calibrate_function(  double_it )
 
         test.add_value( 1. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.saved_value()
 
         test.add_value( 1. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.add_value( 1. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.add_value( 2. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.add_value( 2. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.add_value( 2. )
-        print test.get_value()
+        print( test.get_value() )
 
         test.saved_value()
-        print test.get_value()
+        print( test.get_value() )
 
 #        test.parse( "pa 81"        )
 #        test.parse( "pa     82"   )
