@@ -2,7 +2,6 @@
 
 # parameters    for SmartTerminal   May be russ's big monster
 
-
 # History/status  ( !! = to do ** = done)
 #    !! db names and connect names still need some clean up
 #
@@ -11,7 +10,7 @@ import logging
 import serial
 import sys
 import os
-
+import datetime
 
 # local
 from app_global import AppGlobal
@@ -32,21 +31,19 @@ class Parameters( object ):
         self.default_terminal_mode()               # this is not really a mode that is intended to be used or modified
                                                    # but a default state, call before the "real" mode
                                                    # do not modify unless your really understand
-                                                   # but you can run the termial in this mode
+                                                   # but you can run the terminal in this mode
 
         self.os_tweaks( )                          # adjustments for different operating systems
 
         self.computer_name_tweaks(  )              # adjustments for computers by name
-        
-        
+
+
         # --------- add your mods as desired starting here ---------
-        
-        # self.port               = "COM5"           #
-        # self.baudrate           = 19200            # Standard baud rates include 110, 300, 600, 1200, 2400, 
+
+        # self.port               = "COM5"         #
+        # self.baudrate           = 19200          # Standard baud rates include 110, 300, 600, 1200, 2400,
                                                    #    4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000 and 256000
 
-        
-        
 
 # ---------->> call modes here; I comment out ones I am not using.  Makes it really easy to switch modes
 
@@ -54,19 +51,19 @@ class Parameters( object ):
         # project that I do.  You can look at them as examples or delte the subroutines
         # pick one by uncommenting it.
 
-        #self.tutorial_example_mode()
-        #self.accel_demo_mode()
-        #self.controlino_mode()
-        #self.ddclock_17_test_mode()
-        #self.ddclock_17_auto_mode()
-        #self.ddclock_mode()
+        #self.tutorial_example_mode()     # simple setup for documentation and basic terminal
+        #self.accel_demo_mode()           #
+        #self.controlino_mode()           #
+        self.ddclock_mode()
+
         #self.infra_red_mode()
         #self.green_house_mode()
         #self.motor_driver_mode()
         #self.stepper_tester_mode()
-        #self.serial_cmd_test()
+        #self.serial_cmd_test()               # for messing with master SerialCmd and SerialCmdMaster
         #self.terminal_mode()
-        self.two_axis_mode()
+
+        #self.two_axis_mode()
         #self.well_monitor_mode()
 
         return
@@ -76,7 +73,7 @@ class Parameters( object ):
         """
         this is an sufroutine to tweak the default settings of "default_terminal_mode"
         for particular operating systems
-        you may need to mess with this based on your os setup 
+        you may need to mess with this based on your os setup
         """
         if  self.os_win:
             self.icon              = r"./green_house.ico"    #  greenhouse this has issues on rasPi
@@ -106,7 +103,6 @@ class Parameters( object ):
             #self.win_geometry   = '1300x600+20+20'          # width x height position
             self.pylogging_fn       = "millhouse_smart_terminal.py_log"   # file name for the python logging
 
-
     # ------->> Subroutines:  one for each mode alpha order - except tutorial
 
     def tutorial_example_mode( self, ):
@@ -133,7 +129,6 @@ class Parameters( object ):
                 ]
         # you may get extra buttons with default values to fill the space
 
-
         # you have an option for a pane below the title bar of some size and color, if the height is set
         # to zero you do not get this pane
         # useful if you have 2 instances of the program running and want an easy way to tell them apart
@@ -147,49 +142,43 @@ class Parameters( object ):
     # -------
     def accel_demo_mode( self, ):
 
-        self.mode              = "AccelDemo"
+        self.mode               = "AccelDemo"
 
-        self.baudrate          = 19200  # 9600  19200 38400, 57600, 115200, 128000 and 256000 
-
+        self.baudrate           = 19200  # 9600  19200 38400, 57600, 115200, 128000 and 256000
+        
+    
+        
         # 4 DOWN
         self.send_ctrls = [
                 # text                      cmd       can edit
-                ( "Version of Arduino",      "v",     False ),
-                ( "Help",                    "?",     False ),
-                ( "What Where",              "w",     False ),
-                ( "Send",                    "",      True  ),
+                ( "Version of Arduino",      "v",        False ),
+                ( "Help",                    "?",        False ),
+                ( "What Where",              "w",        False ),
+                ( "Send",                    "",         True  ),
 
-                ( "Acc Set",                 "a500",     True  ),
+                ( "Acc Set",                 "a60",      True  ),
+                ( "Acc Set",                 "a600 ",    True  ),
                 ( "Set Top or Max Speed",    "t5000",    True  ),
-                ( "Acc Set",                 "a5000",    True  ),
                 ( "Set Top or Max Speed",    "t50000",   True  ),
-                
-                
-                ( "moveToNow nn",            "m100",  True  ),
-                ( "moveToNow nn",            "m0",    True  ),
-                ( "moveToNow nn",            "m-100", True  ),
-                ( "Zero current pos",        "z",     False ),
-                
-                ( "moveToNow nn",            "m500",  True  ),
-                ( "moveToNow nn",            "m0",    True  ),
-                ( "moveToNow nn",            "m-500", True  ),
-                ( "Zero current pos",        "z",     False ),
-                
-                ( "Accel Ex 1-3",            "e1",    True  ),
-                ( "moveToNow nn",            "m77",   True  ),
-                ( "moveToNow nn",            "m -88",   True  ),
 
-                ( "Run",                    "r",     False ),
-                #( "Set Speed",              "s2000",   True  ),
-                #( "Stop",                   "s",     False ),
-             
-                ( "What Where",              "w",    False  ),
-                ( "Zero current pos",        "z",    False  ),
+                ( "move To Now nn",          "m100",     True  ),
+                ( "move To Now nn",          "m0",       True  ),
+                ( "move To Now nn",          "m-100",    True  ),
+                ( "Zero current pos",        "z",        False ),
 
-                ( "Help",                     "?",   False ),
+                ( "moveToNow nn",            "m500",     True  ),
+                ( "moveToNow nn",            "m0",       True  ),
+                ( "moveToNow nn",            "m-500",    True  ),
+                ( "Zero current pos",        "z",        False ),
+
+                ( "Accel Examples 1-3",      "e1",       True  ),
+                ( "Accel Examples 1-3",      "e2",       True   ),
+                ( "Accel Examples 1-3",      "e3",       True   ),
+
                 ( "Send",                     "",    True  ),
                 ( "Send",                     "",    True  ),
-                ( "ex long send message aaa bbbb", "",   True ),
+                ( "line1 line1 line2 line2 line3 line3 line4 line4 line5", "",   True ),
+                ( "line1 line1 line2 line2 line3 line3", "",   True ),
                 ]
 
         #self.gui_sends         = 15         # number of send frames in the gui beware if 0
@@ -201,64 +190,17 @@ class Parameters( object ):
         self.mode              = "Controlino"
         pass
 
-   # -------
-    def ddclock_17_test_mode( self, ):
-
-        self.mode              = "DDClock17"
-
-        self.baudrate          = 19200  # 9600
-        self.send_ctrls = [
-                # text                      cmd       can edit
-                ( "Version of arduino",     "v",      False ),
-                ( "Help",                   "?",      False ),
-                ( "What Where",             "w",      False ),
-                ( "Send",                   "",       True  ),
-
-                ("set mode Hr",             "m1",     False ), # "mnn   setHrMinMode"
-                ("set mode Min",            "m0",     False ), # "mnn   setHrMinMode"
-
-                ("set top Speed nn",        "s100000", True ),  # case 's':   setMaxSpeedHr   setMaxSpeedMin
-                ("set Acc nn",              "a5000",    True ),  # case 'a'    setAccHr        setAccMin
-
-                 
-                ("go to Time nn",           "t12",     True ), # case 't'    goToHr     goToMin
-                ("go to Time nn",           "t3",     True ), # case 't'    goToHr     goToMin
-                ("go to Time nn",           "t6",     True ), # case 't'    goToHr     goToMin
-                ("go to Time nn",           "t9",     True ), # case 't'    goToHr     goToMin
-
-                ("nudge nn",                "n8",     True ), # case 't'    
-                ("nudge nn",                "n-4",    True ), # case 't'    
-                ("zero pos",                "z",      True ), # case 'z'   
-                
-                
-                ("do Dance nn",             "d0",     True ), # case 'd'    doHrDance  doDanceMin
-
-                ("Send",                    "",       True ),
-
-
-                #("Report",                  "r",       False ),
-
-               # ("Move", "mnn", True ),
-
-                #("milli sec", "tn", True ),("micro sec", "un", True ),
-                #("Perm N", "p0", True ),("Next Perm", "n", False ),
-                #("Go Steps", "g200", True ),("Send", "", True ),
-#                ("Send", "", True ),
-#                ("AccSet nn", "a20", True ),
-                ("Send", "", True ),
-                ("Send", "", True ),
-                ("Send", "", True ),
-                ("Send", "", True ),
-                ]
-
-        self.gui_sends         = len( self.send_ctrls )
-        self.max_send_rows     = 4         # the send areas are added in columns this many rows long,
-
     # -------
-    def ddclock_17_auto_mode( self, ):
+    def ddclock_mode( self ):
 
-        self.mode                       = "DDClock17Auto"
+        self.mode                       = "ddclock_mode"
 
+        self.baudrate                   = 19200  # 9600
+
+
+
+        # ----- processing related:
+        
         self.ext_processing_module      = "ddc_processingy"
         self.ext_processing_class       = "DDCProcessing"
 
@@ -266,26 +208,77 @@ class Parameters( object ):
         self.get_arduino_version        = "v"
         self.arduino_version            = "DDClock17"
 
-        self.baudrate                   = 19200  # 9600
+        self.begin_demo_dt              = None    # turns off demo mode 
+                                                #               hr:vv     vv:minute     ..........
+        self.begin_demo_dt              = datetime.datetime( 2008, 11,    10,           11, 1, 59 ) # paramaterize ??
+        self.time_multiplier            = 10. # 0 clock is off use manual contol, 1  run at real time  else speed up factor
+        
+        self.effects_on                 =  True    # for the chimes
+        self.hr_speed_slow              = 500
+        self.hr_speed_med               = 1000      
+        self.hr_speed_high              = 10000
+        self.min_speed_slow             = 500 
+        self.min_speed_med              = 1000
+        self.min_speed_high             = 10000
+
+        self.hr_acc_slow                = 500
+        self.hr_acc_med                 = 5000        
+        self.hr_acc_high                = 50000
+        self.min_acc_slow               = 500 
+        self.min_acc_med                = 5000
+        self.min_acc_high               = 50000
+        
+        # ---------------- send area:
+        
+        self.button_height     = 2        # for the send buttons    -- seem to be roughtly the no of lines
+        self.button_width      = 10       # for the send buttons    -- 10-20 seems reasonable starts
+        self.send_width        = 15       # for the text to be sent -- 10-20 seems reasonable starts
+        
         self.send_ctrls = [
                 # text                      cmd       can edit
-                ( "Version of arduino",     "v",      False ),
-                ( "Help",                   "?",      False ),
-                ( "What Where",             "w",      False ),
-                ( "Send",                   "",       True  ),
+                ( "Version of arduino",     "v",                  False ),
+                ( "Help",                   "?",                  False ),
+                ( "What Where",             "w",                  False ),
+                ( "Send",                   "",                   True  ),
 
-                ("set mode Hr",             "m1",     False ), # "mnn   setHrMinMode"
-                ("set mode Min",            "m0",     False ), # "mnn   setHrMinMode"
+                ("set mode Min",            "m2",                  False ), # "mnn   setHrMinMode"
+                ("set mode Hr",             "m1",                  False ), # "mnn   setHrMinMode"
 
-                ("set top Speed nn",        "s10000", True  ),  # case 's':   setMaxSpeedHr   setMaxSpeedMin
-                ("set Acc nn",              "a50",    True  ),  # case 'a'    setAccHr        setAccMin
+                ("set top Speed nn",        "s100000",             True  ),  # case 's':   setMaxSpeedHr   setMaxSpeedMin
+                ("set Acc nn",              "a5000",               True  ),  # case 'a'    setAccHr        setAccMin
 
-                ("Nudge nn",                "n-3",    True  ),  # case 'n':   adjHr      adjMin
-                ("go to Time nn",           "t3",     True  ),  # case 't'    goToHr     goToMin
+                ("go to Time nn",           "t12",                 True  ), # case 't'    goToHr     goToMin
+                ("go to Time nn",           "t3",                  True  ), # case 't'    goToHr     goToMin
+                ("go to Time nn",           "t6",                  True  ), # case 't'    goToHr     goToMin
+                ("go to Time nn",           "t9",                  True  ), # case 't'    goToHr     goToMin
 
-                ("do Dance nn",             "d0",     True  ), # case 'd'    doHrDance  doDanceMin
+                ("go to Time nn",           "t0",                  True ), # case 't'    goToHr     goToMin
+                ("go to Time nn",           "t15",                 True ), #
+                ("go to Time nn",           "t30",                 True ), #
+                ("go to Time nn",           "t60",                 True ), #
 
-                ("Send",                    "",       True  ),
+                ("quick",                   "q1 12 1000 500",       True ), # case 'q'   motor position speed acc
+                ("quick",                   "q1 3 1000 500",        True ), #
+                ("quick",                   "q1 9 1000 500",        True ), #
+                ("quick",                   "q1 50 1000 200",       True ), #
+
+                ("quick",                   "q2 0 1000 500",        True ), # case 'q'   motor position speed acc
+                ("quick",                   "q2 15 1000 500",       True ), #
+                ("quick",                   "q2 30 1000 500",       True ), #
+                ("quick",                   "q2 60 1000 200",       True ), #
+
+
+                ("nudge nn",                "n20",     True ), #
+                ("nudge nn",                "n-20",    True ), #
+                ("nudge nn",                "n4",    True ), #
+                ("nudge nn",                "n-4",     True ), #
+
+                ("zero pos",                "z",      True ), #
+
+
+                ("do Dance nn",             "d0",     True ), # case 'd'    doHrDance  doDanceMin
+
+                ("Send",                    "",       True ),
 
                 ("Send", "", True ),
                 ("Send", "", True ),
@@ -341,141 +334,7 @@ class Parameters( object ):
         self.get_arduino_version    = "v"
         self.arduino_version        = "GreenHouse Monitor"
 
-
-    # -------
-    def serial_cmd_test( self ):
-        """
-        this is a stub fill it out
-        """
-        self.mode              = "serial_cmd_test"
-        self.baudrate          = 38400  # 9600 38400 19200
-        self.send_ctrls = [
-                # button title          send_what     can_edit
-                ("Version",             "v",            False ),
-                ("Help",                "h",            False ),
-                ("Print Alphabet",      "a",            False ),
-                ("Blink nn times",       "b33",          True ),
-                ("Convert (not in lib)","c22",          True  ),
-                ("Echo nn (in lib)",       "e123456",          True  ),
-                ("Echo  nn (in lib)",       "e 654321",         True  ),
-                ("set Mili Sec nn",     "m 65",         True  ),
-                ("Pulse N Times",       "p99",          True  ),
-                ("Get Args qn n",       "q5 6 7",       True  ),
-                ("Report All",          "r",            False ),
-                ("set Micro Se nn",       "u22",          True  ),
-
-                ("XBlink nn",           "x2",           True  ),
-
-                ("Send",                "", True ),
-                ("Send",                "", True ),
-                ("Send",                "", True ),
-                ]
-
-    # -------
-    def stepper_tester_mode( self ):
-
-        self.mode              = "StepperTester"
-        self.baudrate          = 57600  # 9600  19200 38400, 57600, 115200, 128000 and 256000 
-        self.send_ctrls        = [
-                ("Version", "v", False ), ("Report", "r", False ), ("Where?", "w", False ), ("Send", "", True ),
-                #("1", "", True ),("2", "", True ),("3", "", True ),
-                ("Rotate +", "d+", False ),("Rotate -", "d-", False ),
-                ("milli sec", "tn", True ),("micro sec", "un", True ),
-                ("Perm N", "p0", True ),("Next Perm", "n", False ),
-                ("Go Steps", "g200", True ),("Send", "", True ),
-                ("Send", "", True ), ("AccTst nn", "a20", True ), ("Exp N", "x0", True ),
-                ("Help", "?", False ),
-                ("Send", "", True ), ("Send", "", True ),
-                ("Send", "", True ),
-                ]
-
-        #self.gui_sends         = 15         # number of send frames in the gui beware if 0
-        self.gui_sends         = len( self.send_ctrls )          # number of send frames in the gui beware if 0
-        self.max_send_rows     = 4         # the send areas are added in columns this many rows long, then a new
-
-    # -------
-    def two_axis_mode( self, ):
-
-        self.mode              = "TwoAxis"
-
-        self.baudrate          = 19200  # 9600  19200 38400, 57600, 115200, 128000 and 256000 
-
-        self.send_ctrls = [
-                # text                      cmd       can edit
-                ( "Version of Arduino",      "v",     False ),
-                ( "Help",                    "?",     False ),
-                ( "What Where",              "w",     False ),
-                ( "Send",                    "",      True  ),
-
-                
-                ( "Motor 1=x",            "m1",   True  ),
-                ( "Motor 2=y",            "m2",   True  ),
-                ( "Acc Set",                 "a500",     True  ),
-                ( "Set Top or Max Speed",    "s5000",    True  ),
-            
-                ( "Target nn ",                 "t2",     True  ),
-                ( "Target nn ",                 "t4",     True  ),
-                ( "Save target -nn",            "t-2",    True  ),                
-                ( "Save target -nn",            "t-4",    True  ),    
-                
-                
-#                ( "moveToNow nn",            "m100",  True  ),
-#                ( "moveToNow nn",            "m0",    True  ),
-#                ( "moveToNow nn",            "m-100", True  ),
-                #( "Zero current pos",        "z",     False ),
-                
-
-                
-                #( "Accel Ex 1-3",            "e1",    True  ),
-                # ( "Motor x",            "m1",   True  ),
-                # ( "Motor y",            "m2",   True  ),
-                
-                 #( "Accel Ex 1-3",            "e1",    True  ),
-                ( "Nudge current motor",            "n80",    True  ),
-                ( "Nudge current motor",            "n-80",    True  ),
-                ( "Nudge current motor",            "n4",      True  ),
-                ( "Nudge current motor",            "n-4",   True  ),
-                #( "Motor y",            "m2",   True  ),               
-                
-                ( "Zero current pos",        "z",    False  ),
-                # ( "Run",                    "r",     False ),
-                #( "Set Speed",              "s2000",   True  ),
-                #( "Stop",                   "s",     False ),
-             
-                ( "What Where",              "w",    False  ),
-          
-                ( "Dance current xy",                     "d2",    True  ),
-                ( "Send",                     "",    True  ),
-                ( "Send",                    "",      True  ),
-               # ( "ex long send message aaa bbbb", "",   True ),
-                ]
-
-        #self.gui_sends         = 15         # number of send frames in the gui beware if 0
-        self.gui_sends         = len( self.send_ctrls )
-        self.max_send_rows     = 4         # the send areas are added in columns this many rows long,
-
-
-    # -------
-    def well_monitor_mode( self ):
-        self.mode              = "WellMonitor"
-        pass
-
-    # -------
-    def ddclock_mode( self ):
-        self.mode              = "DDClock"
-        self.gui_sends         = 5         # number of send frames in the gui beware if 0  may be updated below
-        self.max_send_rows     = 3         # the send areas are added in columns this many rows long, then a new
-        self.send_ctrls        = [ ( "GetVersion", "v",   True ),     ( "SetSpeed",     "s1000", True ),  ( "SetAcc", "a100",  True ),
-                                   ( "SetPower On",  "p1",  False ),  ( "SetPower Off", "p0", False ),
-                                   ( "MoveTo", "m200", True ),        ( "Stop Motor", "o", False ),       ( "Report", "r", False ),
-                                   ( "Help", "?", False ),                                 ]
-        self.gui_sends         = len( self.send_ctrls ) +  5
-
-    # -------
-    def terminal_mode( self ):
-        self.mode                       = "Terminal"
-
-    # -------
+   # -------
     def motor_driver_mode( self ):
         self.mode                       = "MotorDriver"
         self.ext_processing_module      = "motor_processing"
@@ -494,6 +353,152 @@ class Parameters( object ):
         self.gui_sends         = len( self.send_ctrls )
 
 
+    # -------
+    def serial_cmd_test( self ):
+        """
+        this is a stub fill it out
+        """
+        self.mode              = "serial_cmd_test"
+        self.baudrate          = 115200  # 9600 38400 19200 115200
+        self.send_ctrls = [
+                # button title          send_what     can_edit
+                ("Version",                 "v",            False ),
+                ("Help",                    "h",            False ),
+                ("Report All",              "r",            False ),
+                ("Print Alphabet",          "a",            False ),
+
+                ("Convert (not in lib)",    "c22",          True  ),
+                ("Echo nn (in lib)",        "e123456",      True  ),
+                ("Echo nn (in lib)",        "e    654321",  True  ),
+                ("Echo nn (in lib)",        "e -654321",    True  ),
+
+
+                ("Get Args qn n",           "q5 6   7",       True  ),
+                ("Get Args qn n",           "q5 654321 7",       True  ),
+                ("Get Args qn n",           "q5 -70 99 -3",       True  ),
+                ("Get Args qn n",           "q5 6 7",       True  ),
+
+
+                ("set Micro Sec nn",        "u22",          True  ),
+                ("set Mili Sec nn",         "m 65",         True  ),
+                ("Blink nn times",          "b33",          True ),
+                ("Pulse N Times",           "p99",          True  ),
+
+                ("XBlink nn",               "x2",           True  ),
+                ("Spew",                    "s",            True ),   # self.gt_delta_t  may outrun terminal look at its polling speeds
+                ("Send",                    "",             True ),
+                ("Send",                    "",             True ),
+
+
+
+                ("Send",                "", True ),
+                ("Send",                "", True ),
+                ("Send",                "", True ),
+                ]
+        self.gui_sends         = len( self.send_ctrls )          # number of send frames in the gui beware if 0
+        self.max_send_rows     = 4         # the send areas are added in columns this many rows long, then a new
+
+
+    # -------
+    def stepper_tester_mode( self ):
+
+        self.mode              = "StepperTester"
+        self.baudrate          = 57600  # 9600  19200 38400, 57600, 115200, 128000 and 256000
+        self.send_ctrls        = [
+                ("Version", "v", False ), ("Report", "r", False ), ("Where?", "w", False ), ("Send", "", True ),
+                #("1", "", True ),("2", "", True ),("3", "", True ),
+                ("Rotate +", "d+", False ),("Rotate -", "d-", False ),
+                ("milli sec", "tn", True ),("micro sec", "un", True ),
+                ("Perm N", "p0", True ),("Next Perm", "n", False ),
+                ("Go Steps", "g200", True ),("Send", "", True ),
+                ("Send", "", True ), ("AccTst nn", "a20", True ), ("Exp N", "x0", True ),
+                ("Help", "?", False ),
+                ("Send", "", True ), ("Send", "", True ),
+                ("Send", "", True ),
+                ]
+
+        #self.gui_sends         = 15         # number of send frames in the gui beware if 0
+        self.gui_sends         = len( self.send_ctrls )          # number of send frames in the gui beware if 0
+        self.max_send_rows     = 4         # the send areas are added in columns this many rows long, then a new
+
+    # -------
+    def terminal_mode( self ):
+        self.mode                       = "Terminal"
+
+
+
+
+    # -------
+    def two_axis_mode( self, ):
+
+        self.mode              = "TwoAxis"
+
+        self.baudrate          = 19200  # 9600  19200 38400, 57600, 115200, 128000 and 256000
+
+        self.send_ctrls = [
+                # text                      cmd       can edit
+                ( "Version of Arduino",      "v",     False ),
+                ( "Help",                    "?",     False ),
+                ( "What Where",              "w",     False ),
+                ( "Send",                    "",      True  ),
+
+
+                ( "Motor 1=x",            "m1",   True  ),
+                ( "Motor 2=y",            "m2",   True  ),
+                ( "Acc Set",                 "a500",     True  ),
+                ( "Set Top or Max Speed",    "s5000",    True  ),
+
+                ( "Target nn ",                 "t2",     True  ),
+                ( "Target nn ",                 "t4",     True  ),
+                ( "Save target -nn",            "t-2",    True  ),
+                ( "Save target -nn",            "t-4",    True  ),
+
+
+#                ( "moveToNow nn",            "m100",  True  ),
+#                ( "moveToNow nn",            "m0",    True  ),
+#                ( "moveToNow nn",            "m-100", True  ),
+                #( "Zero current pos",        "z",     False ),
+
+
+
+                #( "Accel Ex 1-3",            "e1",    True  ),
+                # ( "Motor x",            "m1",   True  ),
+                # ( "Motor y",            "m2",   True  ),
+
+                 #( "Accel Ex 1-3",            "e1",    True  ),
+                ( "Nudge current motor",            "n80",    True  ),
+                ( "Nudge current motor",            "n-80",    True  ),
+                ( "Nudge current motor",            "n4",      True  ),
+                ( "Nudge current motor",            "n-4",   True  ),
+                #( "Motor y",            "m2",   True  ),
+
+                ( "Zero current pos",        "z",    False  ),
+                # ( "Run",                    "r",     False ),
+                #( "Set Speed",              "s2000",   True  ),
+                #( "Stop",                   "s",     False ),
+
+                ( "What Where",              "w",    False  ),
+
+                ( "Dance current xy",                     "d2",    True  ),
+                ( "Send",                     "",    True  ),
+                ( "Send",                    "",      True  ),
+               # ( "ex long send message aaa bbbb", "",   True ),
+                ]
+
+        #self.gui_sends         = 15         # number of send frames in the gui beware if 0
+        self.gui_sends         = len( self.send_ctrls )
+        self.max_send_rows     = 4         # the send areas are added in columns this many rows long,
+
+
+    # -------
+    def well_monitor_mode( self ):
+        self.mode              = "WellMonitor"
+        pass
+
+
+
+
+    # ======================== this defaults settings for all the other modes =================
     #   ------------------------------------
     def default_terminal_mode(self, ):
         """
@@ -525,7 +530,7 @@ class Parameters( object ):
 
         # ----- Begin database setup we do not want one  -----------------------
         # this is the name of a database connection
-        self.connect     = "none"        # default = "none"- any connection shoudl change this to a connection name
+        self.connect           = "none"        # default = "none"- any connection shoudl change this to a connection name
 
         # ----- logging ------------------
         # id used by the python logger  -- appears inside the logging file
@@ -535,15 +540,15 @@ class Parameters( object ):
         self.pylogging_fn      = "smart_terminal.py_log"   # file name for the python logging
 
         # python logging level of severity for message to be logged
-        self.logging_level     = logging.DEBUG           #   CRITICAL   50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
-        #self.logging_level     = logging.INFO           #   CRITICAL  50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
+        #self.logging_level     = logging.DEBUG           #   CRITICAL   50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
+        self.logging_level     = logging.INFO           #   CRITICAL  50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
 
-        self.print_to_log      = False
+        self.print_to_log      = False     # not currently implemented
         # ----- send/recieve/recieve area and presets  -----------
 
         #---------------- end meta parameters --------------------
-        self.queue_length         = 20
-        self.queue_sleep          = .1
+        self.queue_length       = 30
+        self.queue_sleep        = .1   # if qieie is full we loop with this as delay in sec smart_terminal.py  post_to_queue is one place to look
 
         # automatically start the task list
         #self.task_list_on         = False   no longer exists
@@ -610,19 +615,22 @@ class Parameters( object ):
         # sets a color that you like or so that differently configured
         # smart terminals are easily distinguished
         self.id_color          = "red"    #  "blue"   "green"  and lots of other work
-        self.id_height         = 0       # height of id pane, 0 for no pane
+        self.id_height         = 0        # height of id pane, 0 for no pane
         self.bk_color          = "blue"   # color for the background, you can match the id color or use a neutral color like gray
         self.bk_color          = "gray"
 
+        self.button_height     = 3        # for the send buttons    -- seem to be roughtly the no of lines
+        self.button_width      = 10       # for the send buttons    -- 10-20 seems reasonable starts
+        self.send_width        = 20       # for the text to be sent -- 10-20 seems reasonable starts
+
+        self.send_bg           = "white"  # white  blue  send text's background color
+
         # specify an icon for the application window
         #  this may be an issue for linux, have some code to skip icon there, need to find out more
-        self.icon              = r"D:\Temp\ico_from_windows\terminal_red.ico"    #  blue red green yellow
-        self.icon              = r".smaller.ico"    #  this format is ng
-        self.icon              = r"D:\Russ\0000\SpyderP\SmartTerminal\smaller.ico"    #  greenhouse will rename
+
         self.icon              = r"smaller.ico"    #  greenhouse will rename  == this has issues on rasPi
         self.icon              = r"./smaller.ico"    #  greenhouse will rename  == this has issues on rasPi
         self.icon              = None
-
 
         self.ex_editor          =  r"D:\apps\Notepad++\notepad++.exe"    # russ win 10 smithers
 

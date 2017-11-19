@@ -3,7 +3,7 @@
 
 #import sys
 import logging
-import time
+#import time
 import datetime
 import abc_def
 import tkinter as Tk
@@ -17,7 +17,6 @@ import tkinter as Tk
 from    app_global import AppGlobal
 
 import  smart_terminal
-
 
 """
 this does the data processing and db actions for the green_house application
@@ -40,36 +39,106 @@ class DDCProcessing( abc_def.ABCProcessing ):
         self.controller         = AppGlobal.controller
         self.parameters         = AppGlobal.parameters
         self.helper_thread      = self.controller.helper_thread
-        
+
         AppGlobal.abc_processing = self
 
         self.logger             = logging.getLogger( self.controller.logger_id + ".DDCProcessing")
 
         self.logger.debug( "in class DDCProcessing init" ) # logger not currently used by here
 
-        self.time               = time.time() # set in set_time -- taken as same for all measurements
+        self.minute_delat       = datetime.timedelta( minutes = 1 )   # just a convient unit
 
-        self.last_time          = time.time()
+#        self.time               = None       # time.time() # set in set_time -- taken as same for all measurements
 
-        self.minute_delat       = datetime.timedelta( minutes = 1 )
+        self.mode               = "undefined for now "
 
-        self.last_datetime      = None
-        self.last_minute        = None
+        self.chime_enabled      = True    # not implemented !!
+
+
+        self.begin_demo_dt      = None
+#        self.last_time          = None       # time.time()
+
+        self.last_datetime      = None     # if none causes time to be initialized
+        self.last_minute        = None     # last minute set
+        self.last_hour          = None     # last minute set
+        
+        self.current_hour       = None
+        self.current_minute     = None 
+
         self.button_actions     = None     # set later
 
         # these are int value for the aruino interface actually divide by 10 and converted to floats
-        self.std_acc_minute     =  100
-        self.std_speed_minute   =  100
+
+        # some of these not in parms, phase these out
+        self.std_acc_minute     = 100
+        self.std_speed_minute   = 100
 
         self.std_acc_hour       = 100
         self.std_speed_hour     = 100
 
-        self.set_wait_time      = 10        # what units
+        self.set_wait_time      = 10        # what units what mean  --- for arduino response
 
+        # self.real_time          = True      # use the real time else use test time parameters
 
+    # ----------------------------------------
+    def get_datetime_now( self, ):  #
+        """
+        call: ht
+        get datetime, but may be used for testing or demo may run fast ( or slow )
+        return datetime for now ( which may be a demo )
+        """
+        if self.last_datetime is None :
+            self.init_time_now( )
+            return self.last_datetime
 
+        begin_demo_dt   = AppGlobal.parameters.begin_demo_dt
+        
+#        if AppGlobal.parameters.time_multiplier  == 1 :     # beware integer 1 is best
+#            return datetime.datetime.now()
+        now               = datetime.datetime.now()
+        if begin_demo_dt == None:
+            ret                 = now
+        else:
+                    # the demo time 
+            ret                 = ( begin_demo_dt  + 
+                                  ( ( now - begin_demo_dt  ) *   AppGlobal.parameters.time_multiplier ) )
+            
+        self.current_hour       = ret.hour
+        if self.current_hour > 12:
+            self.current_hour   -= 12
+        self.current_minute     = ret.minute  
 
-        # ----------------
+        return ret  # the real time 
+
+    # ----------------
+    def init_time_now( self, ):
+        """
+        return change state of self.last_datetime
+        """
+        if ( self.begin_demo_dt != None  ):
+                self.last_datetime      = AppGlobal.parameters.begin_demo_dt
+#                self.begin_demo_dt      =  datetime.datetime.now()
+#                self.begin_demo_dt      =  datetime.datetime( 2008, 11, 10, 17, 1, 59 ) # paramaterize ??
+#        self.time               = None       # time.time() # set in set_time -- taken as same for all measurements
+#
+#        self.last_time          = None       # time.time()
+        else :
+                self.last_datetime      =  datetime.datetime.now()
+
+    # ----------------
+    def init_clock_to_midnight( self, ):
+        """
+        initialize motor speeds ask use if it reads midnight
+        """
+        pass
+#        self.begin_demo_dt      =  datetime.datetime.now()
+#        self.begin_demo_dt      =  datetime.datetime( 2008, 11, 10, 17, 1, 59 ) # paramaterize ??
+##        self.time               = None       # time.time() # set in set_time -- taken as same for all measurements
+##
+##        self.last_time          = None       # time.time()
+#
+#        self.last_datetime      = self.begin_demo_dt
+
 
     # ----------------------------------------
     def add_gui( self, parent, ):  # if this were a class then could access its variables later
@@ -99,6 +168,17 @@ class DDCProcessing( abc_def.ABCProcessing ):
         #a_button_action.set_args( the_steping )
         button_actions.append(   a_button_action )
 
+        # -------------------------
+        a_button_action         = ButtonAction( self, "Toggle ext polling", self.cb_toggle_ext_polling )
+        #a_button_action.set_args( the_steping )
+        button_actions.append(   a_button_action )
+
+        # -------------------------
+        a_button_action         = ButtonAction( self, "Start Clock", self.cb_start_clock )
+        #a_button_action.set_args( the_steping )
+        button_actions.append(   a_button_action )
+
+
         self.button_actions      = button_actions  # controls creation and actions of additional buttons
 
         #color          = "blue"
@@ -126,6 +206,8 @@ class DDCProcessing( abc_def.ABCProcessing ):
     # ----------------------------------------
     def monitor_arduino_loop( self ):
         """
+        green house, adapt for ddclock ??
+
         assumes port opened successfully
         infinite loop
         call: run in ht not controller
@@ -165,6 +247,7 @@ class DDCProcessing( abc_def.ABCProcessing ):
     # ----------------------------------------
     def find_and_monitor_arduino( self ):
         """
+        green house, adapt for ddclock ??
         call: ht
 
         """
@@ -189,28 +272,89 @@ class DDCProcessing( abc_def.ABCProcessing ):
              helper_thread.print_info_string(   "Error: Arduino not found -- looked for " + self.parameters.arduino_version ) # + a_port )
              return
 
-
     # -------------------------------------------------
     def polling_ext( self, ):
-        print( "polling_ext" )
+        """
+        extension from polling in smart_terminal_helper
+        """
+        #print( "polling_ext" )
+         # may not be using this but just call some other loop ???
+        now  =  self.get_datetime_now(  )
+#        print( timeish.strftime("%Y-%m-%d %H:%M:%S") )
 
+        self.minute_chime(  self.current_minute )    
+        self.hour_chime(    self.current_hour   )  #
 
+    # -------------------------------------------------
+    def start_clock( self, ):
+        """
+        which thread, now in gt but this may be bad !!
+        """
+        AppGlobal.helper.processing_ext_enabled   = False
+        # delay perhaps better move to other thread
+        self.last_datetime                        = None
+        AppGlobal.helper.processing_ext_enabled   = True
 
+    # -------------------------------------------------
+    def hour_chime( self, a_hour ):  #
+        """
+        may be called before its time
+        we are only called if a minute has gone by so lets find out which minute use
+        this started as doing the dances from the pi but first implement on the arduino and call dance no.
+        """
+        if self.last_hour == a_hour:
+            # no chime
+            return
+        msg     = "hour chime: " + str( a_hour )
+        print( msg )
+        AppGlobal.helper.print_info_string( msg )
+        # !! put chime enabled here
+        # ferrit out the special cases
 
+        if   ( a_hour == 0 ):
+             pass
+#            self.set_minute_speed_acc( 10, 20 )
+#            self.go_to_minute( a_minute )
+             self.do_hour_dance( "1" )
+
+        elif   ( a_hour == 1 ):
+             pass
+             self.do_hour_dance( "2" )
+             
+        elif   ( a_hour == 2 ):
+             pass
+             self.do_hour_dance( "2" )
+#            self.set_minute_speed_acc( 10, 20 )
+#            self.go_to_minute( a_minute )
+             
+        else:
+             pass
+             self.do_hour_dance( "2" )
+#            self.set_minute_speed_acc( 10, 20 )
+#            self.go_to_minute( a_minute )             
+             
+        #self.set_minute_speed_acc( self.std_speed_minute,  self.std_acc_minute )
+        self.go_to_hour( a_hour )
+        self.last_hour = a_hour
 
     # -------------------------------------------------
     def minute_chime( self, a_minute ):  #
         """
-        may be called before its time 
+        may be called before its time
         we are only called if a minute has gone by so lets find out which minute use
         this started as doing the dances from the pi but first implement on the arduino and call dance no.
+        do hour dance if appropriate 
         """
         if self.last_minute == a_minute:
             # no chime
             return
-        
+        msg     = "minute chime: " + str( a_minute )
+        print( msg )
+        AppGlobal.helper.print_info_string( msg )
+        # !! put chime enabled here
         # ferrit out the special cases
         if   ( a_minute == 0 ):
+             pass
 #            self.set_minute_speed_acc( 10, 20 )
 #            self.go_to_minute( a_minute )
              self.do_minute_dance( "1" )
@@ -223,25 +367,63 @@ class DDCProcessing( abc_def.ABCProcessing ):
         elif   ( a_minute == 14 ):
             self.do_minute_dance( "3" )
 
-
         elif   ( a_minute == 15 ):
             self.do_minute_dance( "4" )
+            self.do_hour_dance(   "2" )
+            self.go_to_hour( self.last_hour )
+            
+        elif   ( a_minute == 29 ):
+            self.do_minute_dance( "4" )
+            self.do_hour_dance(   "2" )
+            self.go_to_hour( self.last_hour )
+            
+        elif   ( a_minute == 30 ):
+            self.do_minute_dance( "4" )
+            self.do_hour_dance(   "2" )
+            self.go_to_hour( self.last_hour )
+            
+        elif   ( a_minute == 44 ):
+            self.do_minute_dance( "4" )
+            #self.do_hour_dance(   "2" )    
+            
+        elif   ( a_minute == 45 ):
+            self.do_minute_dance( "4" )
+            self.do_hour_dance(   "2" )
+            self.go_to_hour(  self.last_hour )
+            
+        elif   ( a_minute == 59 ):
+            self.do_minute_dance( "4" )
+            #self.do_hour_dance(   "2" )
+            
+        elif   ( a_minute == 60 ):
+            self.do_minute_dance( "4" )
+            self.do_hour_dance(   "2" )
+            self.go_to_hour(  self.last_hour )
+            
+#        elif   ( a_minute == 15 ):
+#            self.do_minute_dance( "4" )
+#            self.do_hour_dance(   "2" )             
+            
 #            self.set_minute_speed_acc( 10, 20 )
 #            self.go_to_minute( a_minute )
 
         else:
             pass
-        
-        self.set_minute_speed_acc( self.std_speed_minute,  self.std_acc_minute )
+        # acc now in go_to_minute
+        #self.set_minute_speed_acc( self.std_speed_minute,  self.std_acc_minute )
         self.go_to_minute( a_minute )
 
-        self.last_minute == a_minute
-        
+        self.last_minute = a_minute
+
     # -------------------------------------------------
     def set_minute_speed_acc( self, a_speed,  a_acc ):
-  
-          send_data   = "m0"
+#          print( "called set_minute_speed_acc" )
+#          return
+
+          send_data   = "m2"
           self.helper_thread.send_receive(  send_data, self.set_wait_time  )
+
+          return      #! suppress speed changes from here
 
           send_data   = "s" + str( a_speed )
           self.helper_thread.send_receive(  send_data, self.set_wait_time  )
@@ -250,21 +432,51 @@ class DDCProcessing( abc_def.ABCProcessing ):
           self.helper_thread.send_receive(  send_data, self.set_wait_time  )
 
     # -------------------------------------------------
-    def go_to_minute( a_minute ):
-          send_data   = "t" + str( a_minute )
+    def go_to_minute( self, a_minute ):
+#          print( "called go_to_minute", a_minute )
+#          return
+          send_data   = ( "q2 " + str( a_minute ) +
+                          " "   + str( self.parameters.min_speed_med )  +
+                          " "   + str( self.parameters.min_acc_med )    )
           self.helper_thread.send_receive(  send_data, 20  )
-
+          
+    # -------------------------------------------------
+    def go_to_hour( self, a_hour ):
+#          print( "called go_to_minute", a_minute )
+#          return
+          send_data   = ( "q1 " + str( a_hour ) +
+                          " "   + str( self.parameters.hr_speed_med )  +
+                          " "   + str( self.parameters.hr_acc_med )    )
+          self.helper_thread.send_receive(  send_data, 20  )
+          
     # -------------------------------------------------
     def do_minute_dance( self, a_dance_string ):
           """
           for better speed make a_dance a string
           """
-          send_data   = "m0"
-          self.helper_thread.send_receive( self, send_data, self.set_wait_time  )
+#          print( "called do_minute_dance" )
+#          return
+
+          send_data   = "m2"
+          self.helper_thread.send_receive( send_data, self.set_wait_time  )
 
           send_data   = "d" + a_dance_string
-          self.helper_thread.send_receive( self, send_data, 100  )
+          self.helper_thread.send_receive( send_data, self.set_wait_time  )
+          
+    # -------------------------------------------------
+    def do_hour_dance( self, a_dance_string ):
+          """
+          for better speed make a_dance a string
+          """
+#          print( "called do_minute_dance" )
+#          return
 
+          send_data   = "m1"
+          self.helper_thread.send_receive( send_data, self.set_wait_time  )
+
+          send_data   = "d" + a_dance_string
+          self.helper_thread.send_receive( send_data, self.set_wait_time  )
+          
     # -------------------------------------------------
     def cb_find_and_monitor_arduino( self, a_list ):  #
         """
@@ -298,12 +510,26 @@ class DDCProcessing( abc_def.ABCProcessing ):
         print( "cb_test_test_ports ignore", ignore )
            # self.controller.           helper_thread.test_test_ports(   , (  ) )
         self.controller.post_to_queue( "call", self.controller.helper_thread.find_arduino  , (  ) )
-        
+
     # -------------------------------------------------
     def cb_end_helper( self, ignore ):
         #print( "ignore", ignore )
            # self.controller.           helper_thread.test_test_ports(   , (  ) )
         self.controller.post_to_queue( "call", self.controller.helper_thread.end_helper  , (  ) )
+
+     # -------------------------------------------------
+    def cb_toggle_ext_polling( self, ignore ):
+         AppGlobal.helper.processing_ext_enabled   = not( AppGlobal.helper.processing_ext_enabled )
+
+
+     # -------------------------------------------------
+    def cb_start_clock( self, ignore ):
+         pass
+         self.start_clock()
+         #AppGlobal.helper.processing_ext_enabled   = not( AppGlobal.helper.processing_ext_enabled )
+
+
+
 
 # =================================
 class ButtonAction( object ):

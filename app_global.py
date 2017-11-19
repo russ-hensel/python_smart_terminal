@@ -23,6 +23,7 @@ class AppGlobal( object ):
     parameters              = None
     logger                  = None
     logger_id               = None
+    helper                  = None         # smart terminal help 
     #scheduled_event_list    = "None"
     #helper                  = "None"
     graphing                = None 

@@ -23,9 +23,9 @@ import  pyperclip
 from    tkinter import *   # is added everywhere since a gui assume tkinter namespace
 import  sys
 
-# local 
+# local
 from    app_global import AppGlobal
-#
+
 
 class RedirectText(object):
     """
@@ -67,9 +67,8 @@ class GUI( object ):
     much code in other places than your replacement GUI
     """
     def __init__( self, ):
-        
-  #
-        AppGlobal.gui           = self   
+
+        AppGlobal.gui           = self
         self.controller         = AppGlobal.controller
         self.parameters         = AppGlobal.parameters
         self.gui_running        = False
@@ -387,10 +386,10 @@ class GUI( object ):
         a_text.insert( 0, send_str )
 
         a_button    = Button( send_frame , width=10, height=2, text = "Send" )
-        #  wraplength=50 and adjust as necessary. You will also need to set "justify" 
+        #  wraplength=50 and adjust as necessary. You will also need to set "justify"
         # to LEFT, RIGHT or CENTER. Hope that helps.
         a_button.configure( wraplength = 50 )
-        a_button.configure( justify = RIGHT )        
+        a_button.configure( justify = RIGHT )
         a_button.bind( "<Button-1>", self.cb_send_button ) # function name no () which would call function then
 
         # position
@@ -458,40 +457,45 @@ class GUI( object ):
         """
         make a new send frame, for just one button and text entry to send
         """
-        
+
 #        button heitht
 #        button width
 #        button justify
 #        button wrap
-        
-        
+
+
         ( b_text, s_text, s_enable )  = ctrl_info
 
         # print "__make_send_frame__"  color does not really work here as sends fill area
         #send_frame  = Frame( parent, width=300, height=200, bg=self.parameters.bk_color, relief=RAISED, borderwidth=1 )  # maybe color should always be gray
-        send_frame  = Frame( parent, width=400, height=300, bg="gray", relief=RAISED, borderwidth=1 )  # maybe color should always be gray
+        send_frame     = Frame( parent, width=400, height=300, bg="gray", relief = RAISED, borderwidth = 1 )  # maybe color should always be gray
+        #send_frame     = Frame( parent,
+         #                       width  = 2, # self.parameters.button_width,
+        #                        height = self.parameters.button_height,
+       #                         bg     = "gray", relief = RAISED, borderwidth = 1 )  # maybe color should always be gray
 
-        a_text = Entry( send_frame , ) # width=50, ) # height=2 )
-        a_text.configure( bg = "white" )
+        a_text                 = Entry( send_frame , width = self.parameters.send_width , ) # height=2 )
+        a_text.configure( bg   = self.parameters.send_bg    )    #  "white" )
+        
         a_text.delete(0, END)    # this may be bad syntax when use eleswher
-
         a_text.insert( 0, s_text )
 
         if s_enable:
             a_text.config( state =  NORMAL   )
         else:
             a_text.config( state =  DISABLED )
-            
-        # a_text.config( state =  DISABLED )
-        
-        a_button = Button( send_frame , width=20, height=3, text = b_text )
+
+        a_button = Button( send_frame ,
+                           width   = self.parameters.button_width,
+                           height  = self.parameters.button_height,
+                           text    = b_text )
         a_button.bind( "<Button-1>", self.cb_send_button ) # function name no () which would call function then
-        
+
         a_button.configure( wraplength = 60 )
-        a_button.configure( justify = RIGHT )  
+        a_button.configure( justify = RIGHT )
         # position
         a_button.pack( side = LEFT )
-        a_text.pack(   side = LEFT, fill=BOTH, expand=1)  #  fill X Y BOTH but also need expand=1 ( or prehaps True )
+        a_text.pack(   side = LEFT, fill = BOTH, expand = 1)  #  fill X Y BOTH but also need expand=1 ( or prehaps True )
 
         # save for send function
         self.sends.append( send_frame )
@@ -718,8 +722,8 @@ class GUI( object ):
             print( str( exception ) )
             numlines = 0
         if numlines > self.max_lines:
-            cut  = numlines/2     # lines to keep/remove
-            # remove excess text
+            cut  = int( numlines/2  )   # lines to keep/remove cut may need to be int 
+            # remove excess text  - cut may need to be int 
             self.rec_text.delete( 1.0, str( cut ) + ".0" )
             #msg     = "Delete from test area at " + str( cut )
             #self.logger.info( msg )

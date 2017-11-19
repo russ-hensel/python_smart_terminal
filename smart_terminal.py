@@ -4,51 +4,26 @@
 # History/ToDo  ** = when done   !! = planned or considerd ?? = think about
 #   Copied from mcuterminal, perhaps update from there time to time ( aug 2015 )
 
-#   Important sub projects:
-#   ** probe com ports
 #   !! work on restart in polling
-#   ** introduce a second thread
 #   !! add launch grapher
 #   ?? give grapher access to terminal parameters
 #
-#   ** add some sort of timed tasks unless I have another thread probably needs to be in time
-#       perhaps should make a class, but will just embed now.
-#       was going to hardcode but base on a list
-#       ** start with connect and version tasks
-#       ** measure task
 #   ?? may be additional stuff in gui.py
 #   ?? make a lightweight gui
-#   ** save data to database
-#   ** open log file using popopen and parameter name of some sort
-#   ** convert to python logging
 #   *! improve doc, structure clean up
-#   ** default the send area test
-#   ** add place for test buttons
 #   *! look at goto for looping have done a task need to coordinate with an arduino prog and a list.
-#   ** add command line second parm file like in ir terminal
-#   ** makd a graphing only app, inc a gui = smart_terminal_graph
-#   ** auto scroll off on
-#   ** detect ports through trial try except, perhaps use the test string as well have list of ports to try
-#           look for updates to python look for others code
 #   *! continue to clean up prints and logging
 #   ** add pylog to gui
 #   ?? limit string length as option configure from parameters
-#   ** works on PC and Pi
-#   ** restart
-#   ** some db parms
 #   ?? gray out invalid buttons, open close or just use one with toggle
-#   ** use names for db connect parameters  "none" for no database
 #   !* redirect print to logging file
 #   ** turn on task should it make sure port is closed wrong put in task list if you want it
 #   !! add IR features   ir_gui  ir_processing
-#   ** meta: no db if terminal mode
 #   !! try ports and use one with correct response
 #   !! set up a second thread
 #   !! reboot pi as necessary
 #   !! send emails
-#   ** change text for send button in parameters
 #   !! only probe if port is closed
-
 
 # from __future__ import print_function
 
@@ -62,19 +37,17 @@ import queue
 import threading
 import datetime
 
-# ----------- my code imports --------------------------
-
+# ----------- local imports --------------------------
 
 import db
 import parameters
-
 import gui
 #import gui_in_kivy    # conditional import later
 
 import smart_terminal_helper
 
 from app_global import AppGlobal    # use see next lines
-#self.parameters        = AppGlobal.parameters
+#self.parameters         = AppGlobal.parameters
 #AppGlobal.parameters    = self
 
 # ========================== Begin Class ================================
@@ -97,7 +70,7 @@ class SmartTerminal:
 
         AppGlobal.controller        = self
         self.app_name               = "SmartTerminal"
-        self.version                = "Python3 Ver 2 2017 11 13.01"
+        self.version                = "Python3 Ver 2 2017 11 18.01"
         self.gui                    =  None
         self.no_restarts            =  -1
 
@@ -226,8 +199,8 @@ class SmartTerminal:
         self.helper_thread.start()
 
         self.start_helper_after     = time.time() + self.parameters.start_helper_delay
-        self.helper_start   = ( self.parameters.start_helper_delay  > 0 )
-        self.polling_fail   = False  # is what
+        self.helper_start           = ( self.parameters.start_helper_delay  > 0 )
+        self.polling_fail           = False  # is what
 #        print( "starting mainloop" )
 #        sys.stdout.flush()
         self.gui.run()
@@ -293,17 +266,6 @@ class SmartTerminal:
             self.logger.info( "Restarting " + self.app_name + " version = " + self.version + " mode = " + self.parameters.mode )
             self.logger.info(  "======" )
 
-
-
-#        self.logger.info(  "" )
-#        self.logger.info(  "" )
-#        self.logger.info(  "============================" )
-#        self.logger.info(  "" )
-#
-#        self.logger.info( "Running " + self.app_name + " version = " + self.version  )
-#        self.logger.info(  "" )
-        # !! add mode
-
         if len( sys.argv ) == 0:
             self.logger.info( "no command line arg " )
         else:
@@ -367,7 +329,6 @@ class SmartTerminal:
         print( "create class "  + module_name + " " + class_name )
         
         a_class    = getattr(importlib.import_module(module_name), class_name)
-        #instance   = a_class( self )
         instance   = a_class(  )
         return instance
 
@@ -441,7 +402,7 @@ class SmartTerminal:
                 self.receive()
             # self.start_helper_after  time to start helper if used
             # loop till queue empty
-            ( action, function, function_args ) = self.__rec_from_queue__()
+            ( action, function, function_args ) = self.rec_from_queue()
             while action != "":
                 if action == "call":
                     #print( "controller making call" )
@@ -455,7 +416,7 @@ class SmartTerminal:
                 elif action == "info":
                     self.gui.print_info_string( function_args[ 0 ] )
 
-                ( action, function, function_args ) = self.__rec_from_queue__()
+                ( action, function, function_args ) = self.rec_from_queue()
 
             self.task_tick  += 1    # for delay in list send
 
@@ -495,7 +456,6 @@ class SmartTerminal:
             if  self.polling_fail:
                 pass
             else:
-                #print 'In finally block for cleanup'
                 self.gui.root.after( self.parameters.gt_delta_t, self.polling )  # reschedule event
 
         return
@@ -506,7 +466,6 @@ class SmartTerminal:
         here or in gui
         #self.gui.lbl_db_status  = "DB: not connected"
         """
-
         if self.parameters.kivy:
             return
         spacer   = "                                              "
@@ -635,27 +594,31 @@ class SmartTerminal:
             loop_flag      = False
             ix_queue  += 1
             try:
+                # put a short wait in so we do not loop too fast  -- we have it 
                 #print( "try posting " )
                 self.queue_to_helper.put_nowait( ( action, function, args ) )
             except queue.Full:
 
                 # try again but give polling a chance to catch up
-                print( "smart_terminal queue full looping" )
-                self.logger.info( "queue to helper full looping" )
+                msg = "smart_terminal.py queue to helper full: looping"
+                print( msg )
+                self.logger.info( msg )
                 # protect against infinit loop if queue is not emptied
                 if self.ix_queue > ix_queue_max:
-                    print( "too much queue looping" )
-                    self.logger.info( "too much queue looping" )
+                     
+                    msg = "smart_terminal.py queue too much queue looping"
+                    print( msg )
+                    self.logger.info( msg )
                     pass
                 else:
                     loop_flag = True
                     time.sleep( self.parameters.queue_sleep )
 
     # --------------------------------------------------
-    def __rec_from_queue__( self, ):
+    def rec_from_queue( self, ):
         """
         take an item off the queue, think here for expansion may not be currently used.
-        ( action, function, function_args ) = self.__rec_from_queue__()
+        ( action, function, function_args ) = self.rec_from_queue()
         """
         try:
             action, function, function_args   = self.queue_fr_helper.get_nowait()
@@ -711,7 +674,7 @@ class SmartTerminal:
         ?? do we want to sync the db both are using this would be nice
         could we integrate back into main app
         """
-        print( "os_open_graph()" )
+        print( "os_open_graph() not sure want to support this" )
         from subprocess import Popen, PIPE  # since infrequently used ??
         proc = Popen( [ "python", self.parameters.grapher ] )
 

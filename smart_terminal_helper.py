@@ -33,8 +33,10 @@ class HelperThread( threading.Thread ):
         threading.Thread.__init__( self, group=group, target=target, name=name,  )
         #threading.Thread.__init__( self, group=group, target=target, name=name, verbose=verbose )   # verbose not throwing an error   say what
 
-        self.args     = args
-        self.kwargs   = kwargs
+        self.args                       = args
+        self.kwargs                     = kwargs
+        self.processing_ext_enabled     = False      # AppGlobal.helper.processing_ext_enabled
+        
         # see set controller for more instance var
         return
 
@@ -42,6 +44,7 @@ class HelperThread( threading.Thread ):
     def set_controller( self, controller ):
         """
         call from gui to finish set up of this object
+        !! may need revision using app global part of issue is timing 
         """
         # df1 default 1 this is for iomega usb on smithers
         self.controller        = controller
@@ -57,11 +60,8 @@ class HelperThread( threading.Thread ):
 
         self.ht_delta_t        = self.parameters.ht_delta_t
         #self.ix_queue_max        = "delete after search"
-
+        AppGlobal.helper        = self
         #self.queue_length      = self.parameters.queue_length  not needed
-
-        print( "smart_terminal_helpe.HelperThread set controller" )
-#        self.change_function   = ( False, "a_function", "function_args" )   # for changing functions
 
     # ------------------------------------------------
     def run( self ):
@@ -96,7 +96,7 @@ class HelperThread( threading.Thread ):
                     # this will kill the thread
                     self.controller.helper_task_active  = False
                     return
-                if  AppGlobal.abc_processing != None:
+                if  ( self.processing_ext_enabled ) and ( AppGlobal.abc_processing != None ) :
                     AppGlobal.abc_processing.polling_ext()
             except HelperException as he:
                 self.logger.info( "smart_terminal_helper.HelperThread throw execption from " + he.msg )        # info debug...
@@ -257,6 +257,7 @@ class HelperThread( threading.Thread ):
 
         helper thread only
         as an alternative use the queue which does not block the gui
+        AppGlobal.helper.print_info_string( text )
         """
         self.post_to_queue(  "info", None, ( text ) )  # info gui.print_info_string goes to reciev area
 
@@ -615,16 +616,16 @@ class HelperThread( threading.Thread ):
                 self.queue_fr_helper.put_nowait( ( action, function, args ) )
             except queue.Full:
                 # try again but give polling a chance to catch up
-                print( "helper queue full looping" )
+                print( "helper: queue full looping" )
                 self.logger.error( "helper post_to_queue()  queue full looping: " +str( action ) )
                 # protect against infinit loop if queue is not emptied
                 if self.ix_queue > ix_queue_max:
                     #print "too much queue looping"
-                    self.logger.error( "helper post_to_queue() too much queue looping: " +str( action )  )
+                    self.logger.error( "helper: post_to_queue() too much queue looping: " +str( action )  )
                     pass
                 else:
                     loop_flag = True
-                    time.sleep( self.parameters.queue_sleep )   # ??
+                    time.sleep( self.parameters.queue_sleep )   # so we do not loop to fast 
 
     # ------------------------------------------------
     def toggle_lockxxxxx(  self,  ):

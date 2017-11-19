@@ -137,9 +137,11 @@ class GHProcessing( abc_def.ABCProcessing ):
             i_button_action.set_button( a_button )
 
         return ret_frame
+    
     # -------------------------------------------------
     def polling_ext( self, ):
         #print( "polling_ext" )
+        # may not be using this but just call some other loop ???
         pass
 
     # ----------------------------------------
