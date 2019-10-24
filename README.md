@@ -23,7 +23,7 @@ Would You Like to Contribute??
 	Note for contributers 
 		Fixes would be great.
 		Extensions would be great.
-		Re write of current code would generally be discouraged... you are free to create a fork of your own.
+		Re write of current code would generally be discouraged... but you are free to create a fork of your own.
 		( take a look at readme_rsh.txt for some additional notes on changes... )
 	
 ```
