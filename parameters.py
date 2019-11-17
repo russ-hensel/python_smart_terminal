@@ -48,7 +48,7 @@ class Parameters( object ):
         #self.controlino_mode()           #
 
         #self.ddclock_mode()
-#        self.ddclock_david()
+        self.ddclock_david()
         #self.ddclock_test_mode()
         #self.ddclock_demo_1()
         #self.ddclock_demo_2()
@@ -961,7 +961,7 @@ class Parameters( object ):
         """
         self.mode              = "Default Terminal"
         self.icon              = r"terminal_1.ico"    #
-        self.icon              = None                 # no icon at all -- that is os default
+        #self.icon              = None                 # no icon at all -- that is os default
 
         #---------------- begin meta parameters --------------------
         # -----  os platform...  set automatically, do not change -------------
@@ -975,6 +975,15 @@ class Parameters( object ):
 
         self.platform       = self.our_os    # sometimes it matters which os
         self.computername   = ( str( os.getenv( "COMPUTERNAME" ) ) ).lower()
+
+        self.help_file       =  "http://www.opencircuits.com/SmartPlug_Help_File"   # can be url or a local file
+
+        help_file  = r"D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5\wiki_etc\Python Smart Terminal - OpenCircuits.pdf"
+        help_file  = r"wiki_etc\Python Smart Terminal - OpenCircuits.pdf"
+
+
+        self.help_file       =  help_file
+
 
         #---------------- end meta parameters --------------------
         #---------------- ddatabase related --------------------

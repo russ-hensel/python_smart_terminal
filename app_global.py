@@ -235,7 +235,7 @@ class AppGlobal( object ):
         """
 		show about box -- might be nice to make simple to go to url ( help button )
         """
-        url   =  r"http://www.opencircuits.com/SmartPlug_Help_File"
+        url   =  r"http://www.opencircuits.com/Python_Smart_Terminal"
         __, mem_msg   = cls.show_process_memory( )
         msg  = f"{cls.controller.app_name}  version:{cls.controller.version} \n  by Russ Hensel\n  Memory in use {mem_msg} \n  Check <Help> or \n     {url} \n     for more info."
         messagebox.showinfo( "About", msg )

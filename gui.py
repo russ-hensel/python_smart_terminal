@@ -407,7 +407,7 @@ class GUI( object ):
         #       keeep for a test button
         a_button = Button( a_frame , width=10, height=2, text = "Help" )
         #a_button.config( command = self.controller.cb_test )
-        a_button.config( command = self.cb_test_1 )
+        a_button.config( command = self.controller.cb_help )
         a_button.pack( side = LEFT )
 
 #       keeep for a test button

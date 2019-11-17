@@ -208,3 +208,174 @@ Stack (most recent call last):
 2019-11-09 22:04:19,551 - smart_terminal - Notice - Time now: 2019-11-10 03:04:19
 2019-11-09 22:04:19,613 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
 2019-11-09 22:04:23,292 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 09:59:27,684 - sch_me - INFO - Done config_logger
+2019-11-17 10:00:01,792 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:00:01,792 - smart_terminal - Notice - 
+2019-11-17 10:00:01,792 - smart_terminal - Notice - 
+2019-11-17 10:00:01,792 - smart_terminal - Notice - 
+2019-11-17 10:00:01,792 - smart_terminal - Notice - ============================
+2019-11-17 10:00:01,792 - smart_terminal - Notice - 
+2019-11-17 10:00:01,792 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:00:01,792 - smart_terminal - Notice - 
+2019-11-17 10:00:01,792 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-11-17 10:00:01,792 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:00:01,792 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:00:01,792 - smart_terminal - Notice - Time now: 2019-11-17 15:00:01
+2019-11-17 10:00:01,832 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:00:35,770 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:00:39,831 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:00:39,831 - smart_terminal - Notice - 
+2019-11-17 10:00:39,831 - smart_terminal - Notice - 
+2019-11-17 10:00:39,831 - smart_terminal - Notice - 
+2019-11-17 10:00:39,832 - smart_terminal - Notice - ============================
+2019-11-17 10:00:39,832 - smart_terminal - Notice - 
+2019-11-17 10:00:39,832 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:00:39,832 - smart_terminal - Notice - 
+2019-11-17 10:00:39,832 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-11-17 10:00:39,832 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:00:39,832 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:00:39,832 - smart_terminal - Notice - Time now: 2019-11-17 15:00:39
+2019-11-17 10:00:39,833 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:00:43,101 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:07:43,248 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:07:43,248 - smart_terminal - Notice - 
+2019-11-17 10:07:43,248 - smart_terminal - Notice - 
+2019-11-17 10:07:43,248 - smart_terminal - Notice - 
+2019-11-17 10:07:43,248 - smart_terminal - Notice - ============================
+2019-11-17 10:07:43,248 - smart_terminal - Notice - 
+2019-11-17 10:07:43,248 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:07:43,248 - smart_terminal - Notice - 
+2019-11-17 10:07:43,249 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-11-17 10:07:43,249 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:07:43,249 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:07:43,249 - smart_terminal - Notice - Time now: 2019-11-17 15:07:43
+2019-11-17 10:07:43,250 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:07:57,288 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:08:24,272 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:08:24,273 - smart_terminal - Notice - 
+2019-11-17 10:08:24,273 - smart_terminal - Notice - 
+2019-11-17 10:08:24,273 - smart_terminal - Notice - 
+2019-11-17 10:08:24,273 - smart_terminal - Notice - ============================
+2019-11-17 10:08:24,273 - smart_terminal - Notice - 
+2019-11-17 10:08:24,273 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:08:24,273 - smart_terminal - Notice - 
+2019-11-17 10:08:24,273 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-11-17 10:08:24,273 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:08:24,273 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:08:24,273 - smart_terminal - Notice - Time now: 2019-11-17 15:08:24
+2019-11-17 10:08:24,274 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:08:55,602 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:10:07,685 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:10:07,685 - smart_terminal - Notice - 
+2019-11-17 10:10:07,685 - smart_terminal - Notice - 
+2019-11-17 10:10:07,685 - smart_terminal - Notice - 
+2019-11-17 10:10:07,685 - smart_terminal - Notice - ============================
+2019-11-17 10:10:07,685 - smart_terminal - Notice - 
+2019-11-17 10:10:07,685 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:10:07,685 - smart_terminal - Notice - 
+2019-11-17 10:10:07,685 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/parameters.py
+2019-11-17 10:10:07,685 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:10:07,685 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:10:07,685 - smart_terminal - Notice - Time now: 2019-11-17 15:10:07
+2019-11-17 10:10:07,686 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:10:27,652 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:11:11,987 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:11:11,987 - smart_terminal - Notice - 
+2019-11-17 10:11:11,987 - smart_terminal - Notice - 
+2019-11-17 10:11:11,987 - smart_terminal - Notice - 
+2019-11-17 10:11:11,987 - smart_terminal - Notice - ============================
+2019-11-17 10:11:11,988 - smart_terminal - Notice - 
+2019-11-17 10:11:11,988 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:11:11,988 - smart_terminal - Notice - 
+2019-11-17 10:11:11,988 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/parameters.py
+2019-11-17 10:11:11,988 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:11:11,988 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:11:11,988 - smart_terminal - Notice - Time now: 2019-11-17 15:11:11
+2019-11-17 10:11:11,989 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:11:48,807 - smart_terminal - CRITICAL - SmartTerminal: restart
+2019-11-17 10:11:48,869 - smart_terminal - INFO - Done config_logger
+2019-11-17 10:11:48,869 - smart_terminal - Notice - 
+2019-11-17 10:11:48,869 - smart_terminal - Notice - ======
+2019-11-17 10:11:48,869 - smart_terminal - Notice - Restarting SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 10:11:48,869 - smart_terminal - Notice - ======
+2019-11-17 10:11:48,869 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/parameters.py
+2019-11-17 10:11:48,869 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 10:11:48,869 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 10:11:48,869 - smart_terminal - Notice - Time now: 2019-11-17 15:11:48
+2019-11-17 10:11:48,870 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 10:11:55,357 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 10:11:55,358 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 14:00:47,631 - smart_terminal - INFO - Done config_logger
+2019-11-17 14:00:47,632 - smart_terminal - Notice - 
+2019-11-17 14:00:47,632 - smart_terminal - Notice - 
+2019-11-17 14:00:47,632 - smart_terminal - Notice - 
+2019-11-17 14:00:47,632 - smart_terminal - Notice - ============================
+2019-11-17 14:00:47,632 - smart_terminal - Notice - 
+2019-11-17 14:00:47,632 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 14:00:47,632 - smart_terminal - Notice - 
+2019-11-17 14:00:47,632 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/gui.py
+2019-11-17 14:00:47,632 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 14:00:47,632 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 14:00:47,632 - smart_terminal - Notice - Time now: 2019-11-17 19:00:47
+2019-11-17 14:00:47,634 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 14:00:58,188 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 14:02:47,301 - smart_terminal - INFO - Done config_logger
+2019-11-17 14:02:47,301 - smart_terminal - Notice - 
+2019-11-17 14:02:47,301 - smart_terminal - Notice - 
+2019-11-17 14:02:47,301 - smart_terminal - Notice - 
+2019-11-17 14:02:47,302 - smart_terminal - Notice - ============================
+2019-11-17 14:02:47,302 - smart_terminal - Notice - 
+2019-11-17 14:02:47,302 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 14:02:47,302 - smart_terminal - Notice - 
+2019-11-17 14:02:47,302 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-11-17 14:02:47,302 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 14:02:47,302 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 14:02:47,302 - smart_terminal - Notice - Time now: 2019-11-17 19:02:47
+2019-11-17 14:02:47,303 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 14:04:10,009 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 14:05:28,170 - smart_terminal - INFO - Done config_logger
+2019-11-17 14:05:28,170 - smart_terminal - Notice - 
+2019-11-17 14:05:28,170 - smart_terminal - Notice - 
+2019-11-17 14:05:28,170 - smart_terminal - Notice - 
+2019-11-17 14:05:28,170 - smart_terminal - Notice - ============================
+2019-11-17 14:05:28,170 - smart_terminal - Notice - 
+2019-11-17 14:05:28,170 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 14:05:28,170 - smart_terminal - Notice - 
+2019-11-17 14:05:28,170 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/parameters.py
+2019-11-17 14:05:28,170 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 14:05:28,170 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 14:05:28,170 - smart_terminal - Notice - Time now: 2019-11-17 19:05:28
+2019-11-17 14:05:28,172 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 14:09:56,926 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 14:10:01,943 - smart_terminal - INFO - Done config_logger
+2019-11-17 14:10:01,944 - smart_terminal - Notice - 
+2019-11-17 14:10:01,944 - smart_terminal - Notice - 
+2019-11-17 14:10:01,944 - smart_terminal - Notice - 
+2019-11-17 14:10:01,944 - smart_terminal - Notice - ============================
+2019-11-17 14:10:01,944 - smart_terminal - Notice - 
+2019-11-17 14:10:01,944 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = Default Terminal
+2019-11-17 14:10:01,944 - smart_terminal - Notice - 
+2019-11-17 14:10:01,944 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/app_global.py
+2019-11-17 14:10:01,944 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 14:10:01,944 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 14:10:01,944 - smart_terminal - Notice - Time now: 2019-11-17 19:10:01
+2019-11-17 14:10:01,945 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 14:10:27,999 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 14:11:49,611 - smart_terminal - INFO - Done config_logger
+2019-11-17 14:11:49,611 - smart_terminal - Notice - 
+2019-11-17 14:11:49,611 - smart_terminal - Notice - 
+2019-11-17 14:11:49,611 - smart_terminal - Notice - 
+2019-11-17 14:11:49,611 - smart_terminal - Notice - ============================
+2019-11-17 14:11:49,611 - smart_terminal - Notice - 
+2019-11-17 14:11:49,611 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = ddclock_david
+2019-11-17 14:11:49,612 - smart_terminal - Notice - 
+2019-11-17 14:11:49,612 - smart_terminal - Notice - command line arg 0 = D:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/parameters.py
+2019-11-17 14:11:49,612 - smart_terminal - Notice - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-11-17 14:11:49,612 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 14:11:49,612 - smart_terminal - Notice - Time now: 2019-11-17 19:11:49
+2019-11-17 14:11:49,613 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 14:11:59,849 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2019-11-17 14:12:01,963 - smart_terminal.helper - INFO - send_receive() timeout -- send_data = >c1 2 2<
+2019-11-17 14:12:05,064 - smart_terminal.helper - INFO - raise HelperException in send_receive queue to helper not empty -- send_data = >l156<
+2019-11-17 14:12:05,064 - smart_terminal.helper - INFO - smart_terminal_helper.HelperThread throw execption from in send_receive
+2019-11-17 14:12:05,165 - smart_terminal - Notice - SmartTerminal: all done

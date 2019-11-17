@@ -715,6 +715,16 @@ class SmartTerminal:
 
 
     #=============------------------ callbacks for buttons cb_ -----------------
+
+
+    def cb_help( self,  ):
+        """
+        call back for gui button -- this is for the test button, which
+        """
+        # this shows how to run stuff in the helper -- call thru queue, post to queue
+        #help_file      = self.parameters.help_file
+        AppGlobal.os_open_help_file( self.parameters.help_file )
+
     # ----------------------------------------------
     def cb_test( self,  ):
         """
