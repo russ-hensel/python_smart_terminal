@@ -36,6 +36,7 @@ class DataValue( object ):
        # time no longer used
        # self.time      = None          # many values share time shoule we keep it here ??
        #self.value  = None
+       self.invalid_value      = -99    # data values to ignore
        self.ave_value.reset()
        self.value   = None
 
@@ -43,6 +44,8 @@ class DataValue( object ):
     def identity(self, raw_data  ):
         """
         use as calibrate function, no transform of data
+        this is the identity operation, raw data = calibrated data
+        plan to use as default for this class
         """
         value = raw_data
         return value
@@ -51,6 +54,7 @@ class DataValue( object ):
     def set_calibrate_function(self, calibrate_function  ):
         """
         setup the calibrate or conversion function
+
         """
         self.calibrate_function = calibrate_function
         return
@@ -60,8 +64,10 @@ class DataValue( object ):
         """
         add a measurement to the value we are tracking
         use the calibrate function
+        ignore invalid values
         """
-        self.ave_value.nextVal( self.calibrate_function( value ) )
+        if value != self.invalid_value:
+            self.ave_value.nextVal( self.calibrate_function( value ) )
         return self.get_value()
 
     # ----------------------------------------------------------
@@ -82,7 +88,6 @@ class DataValue( object ):
         self.old_value  =  self.ave_value.value
         return self.ave_value.value
 
-
     # ----------------------------------------------------------
     def __str__(self):
        """
@@ -93,7 +98,6 @@ class DataValue( object ):
        descr  = "Data value:  " + str( self.ave_value.value )
 
        return descr
-
 
     # ----------------------------------------------------------
     def printt( self ):

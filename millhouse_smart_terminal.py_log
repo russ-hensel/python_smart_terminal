@@ -1,27 +1,16 @@
-...2017-11-18 16:15:13,497 - smart_terminal - INFO - Done config_logger
-2017-11-18 16:15:13,498 - smart_terminal - INFO - 
-2017-11-18 16:15:13,498 - smart_terminal - INFO - 
-2017-11-18 16:15:13,498 - smart_terminal - INFO - ============================
-2017-11-18 16:15:13,498 - smart_terminal - INFO - 
-2017-11-18 16:15:13,498 - smart_terminal - INFO - Running SmartTerminal version = Python3 Ver 2 2017 11 18.01 mode = ddclock_mode
-2017-11-18 16:15:13,498 - smart_terminal - INFO - 
-2017-11-18 16:15:13,498 - smart_terminal - INFO - command line arg 0 = C:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver2/smart_terminal_helper.py
-2017-11-18 16:15:13,499 - smart_terminal - INFO - current directory C:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver2
-2017-11-18 16:15:13,499 - smart_terminal - INFO - COMPUTERNAME MILLHOUSE
-2017-11-18 16:15:13,499 - smart_terminal - INFO - Time now: 2017-11-18 21:15:13
-2017-11-18 16:15:13,502 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
-2017-11-18 16:15:20,779 - smart_terminal - INFO - open_driver, opened ok
-2017-11-18 16:32:18,273 - smart_terminal - INFO - SmartTerminal: all done
-2017-11-18 16:32:21,117 - smart_terminal - INFO - Done config_logger
-2017-11-18 16:32:21,117 - smart_terminal - INFO - 
-2017-11-18 16:32:21,118 - smart_terminal - INFO - 
-2017-11-18 16:32:21,118 - smart_terminal - INFO - ============================
-2017-11-18 16:32:21,118 - smart_terminal - INFO - 
-2017-11-18 16:32:21,118 - smart_terminal - INFO - Running SmartTerminal version = Python3 Ver 2 2017 11 18.01 mode = ddclock_mode
-2017-11-18 16:32:21,118 - smart_terminal - INFO - 
-2017-11-18 16:32:21,118 - smart_terminal - INFO - command line arg 0 = C:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver2/parameters.py
-2017-11-18 16:32:21,118 - smart_terminal - INFO - current directory C:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver2
-2017-11-18 16:32:21,118 - smart_terminal - INFO - COMPUTERNAME MILLHOUSE
-2017-11-18 16:32:21,118 - smart_terminal - INFO - Time now: 2017-11-18 21:32:21
-2017-11-18 16:32:21,120 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
-2017-11-18 16:32:23,150 - smart_terminal - INFO - open_driver, opened ok
+2019-10-27 13:22:20,649 - smart_terminal - INFO - Done config_logger
+2019-10-27 13:22:20,651 - smart_terminal - Level 99 - 
+2019-10-27 13:22:20,652 - smart_terminal - Level 99 - 
+2019-10-27 13:22:20,652 - smart_terminal - Level 99 - 
+2019-10-27 13:22:20,652 - smart_terminal - Level 99 - ============================
+2019-10-27 13:22:20,652 - smart_terminal - Level 99 - 
+2019-10-27 13:22:20,653 - smart_terminal - Level 99 - Running SmartTerminal version = Ver5: 2019 05 08.1 mode = ddclock_david
+2019-10-27 13:22:20,653 - smart_terminal - Level 99 - 
+2019-10-27 13:22:20,653 - smart_terminal - Level 99 - command line arg 0 = C:/Russ/0000/python00/python3/_projects/SmartTerminal/Ver5/smart_terminal.py
+2019-10-27 13:22:20,653 - smart_terminal - Level 99 - current directory C:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5
+2019-10-27 13:22:20,654 - smart_terminal - Level 99 - COMPUTERNAME MILLHOUSE
+2019-10-27 13:22:20,654 - smart_terminal - Level 99 - Time now: 2019-10-27 17:22:20
+2019-10-27 13:22:20,880 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-10-27 13:22:29,652 - smart_terminal.helper - INFO - raise HelperException
+2019-10-27 13:22:29,652 - smart_terminal.helper - INFO - smart_terminal_helper.HelperThread throw execption from in sleep_ht_for - queue not empty breaking back to helper thread polling ...
+2019-10-27 13:22:29,753 - smart_terminal - Level 99 - SmartTerminal: all done

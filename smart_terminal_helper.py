@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+Purpose:
+	second thread support for smart_terminal.SmartTerminal 
 
+
+"""
 
 #import stat
 import time
@@ -11,7 +16,7 @@ import sys
 import threading
 from   app_global import AppGlobal
 
-# try with subclassing of Thread
+# with sub classing of Thread
 # or is this a thread   or just its manager
 # In other words, only override the __init__() and run() methods of this class.
 # class threading.Thread(group=None, target=None, name=None, args=(), kwargs={})
@@ -36,36 +41,42 @@ class HelperThread( threading.Thread ):
         self.args                       = args
         self.kwargs                     = kwargs
         self.processing_ext_enabled     = False      # AppGlobal.helper.processing_ext_enabled
-        
-        # see set controller for more instance var
+
         return
 
     # ------------------------------------------------
     def set_controller( self, controller ):
         """
         call from gui to finish set up of this object
-        !! may need revision using app global part of issue is timing 
+        !! may need revision using app global part of issue is timing
+
         """
         # df1 default 1 this is for iomega usb on smithers
-        self.controller        = controller
-        self.parameters        = controller.parameters
+        self.controller           = controller
+        self.parameters           = controller.parameters
 
-        self.queue_to_helper   = self.controller.queue_to_helper
+        self.queue_to_helper      = self.controller.queue_to_helper
         print( self.queue_to_helper )
-        self.queue_fr_helper   = self.controller.queue_fr_helper
-        self.gui_recieve_lock  = self.controller.gui_recieve_lock
+        self.queue_fr_helper      = self.controller.queue_fr_helper
+        self.gui_recieve_lock     = self.controller.gui_recieve_lock
 
-        self.logger            = logging.getLogger(  self.controller.logger_id + ".helper" )
+        self.logger               = logging.getLogger(  self.controller.logger_id + ".helper" )
         self.logger.info( "smart_terminal_helpe.HelperThread set controller" )        # info debug...
 
-        self.ht_delta_t        = self.parameters.ht_delta_t
-        #self.ix_queue_max        = "delete after search"
-        AppGlobal.helper        = self
+        self.ht_delta_t            = self.parameters.ht_delta_t
+        #self.ix_queue_max         = "delete after search"
+        AppGlobal.helper_thread    = self
         #self.queue_length      = self.parameters.queue_length  not needed
 
     # ------------------------------------------------
     def run( self ):
-        self.polling()   # just to match the names
+
+        try:
+            self.polling()   # just to match the names
+
+        except Exception as err:
+            self.logger.critical( "-------exception in helper ----------" )
+            self.logger.critical(  err,  stack_info=True )   # just where I am full trace back most info
 
     # ------------------------------------------------
     def polling(self):
@@ -79,30 +90,27 @@ class HelperThread( threading.Thread ):
             #print( "polling" )
             #data   = self.rec_from_queue( )
             #if not( self.gui_recieve_lock.locked() ):
-            data   = self.receive( )
+            data   = self.receive( )   #
             try:
                 ( action, function, function_args ) = self.rec_from_queue()
                 if action != "":
                     self.logger.debug(  "smart_terminal_helper.polling()  " + action + " " + str( function ) + " " + str( function_args) )  # ?? comment out
                 if action == "call":
-                    #print( "ht making call" )
-                    sys.stdout.flush()
+                    self.logger.debug(  "smart_terminal_helper.polling() making queued function call"  )
                     self.controller.helper_task_active  = True
                     function( *function_args )
-                    self.logger.debug(  "smart_terminal_helper.polling() return running helper loop "  )  # ?? comment out
+                    self.logger.debug(  "smart_terminal_helper.polling() returned from queued function call "  )  # ?? comment out
                     #self.print_helper_label( "return running helper loop " )
                     self.controller.helper_task_active  = False    # do we maintain this, or move to helper
                 if action == "stop":
-                    # this will kill the thread
                     self.controller.helper_task_active  = False
-                    return
+                    return  # this will kill the thread
                 if  ( self.processing_ext_enabled ) and ( AppGlobal.abc_processing != None ) :
                     AppGlobal.abc_processing.polling_ext()
             except HelperException as he:
                 self.logger.info( "smart_terminal_helper.HelperThread throw execption from " + he.msg )        # info debug...
-            
-            #print( )
 
+            #print( )
             time.sleep( self.ht_delta_t )  # ok here since it is the main pooling loop
 
         return
@@ -120,10 +128,9 @@ class HelperThread( threading.Thread ):
         # then the ones in self.parameters.port_list
         #self.release_gui_for( .0 )
         # !!  looks like python report not used in driver  add this or not
-        gui    = AppGlobal.gui
-        
-        self.print_info_string( "Looking for Arduino " + self.parameters.arduino_version )
-        
+
+        self.print_info_string( "Looking for Arduino: " + self.parameters.arduino_version )
+
         port_list  = []
         port_list.append( self.parameters.port )
         for i_port in self.parameters.port_list:
@@ -162,23 +169,6 @@ class HelperThread( threading.Thread ):
         return ( False, "" )
 
     # ------------------------------------------------
-    def end_helper( self, ):
-        """
-        a function to interrupt the help thread and go back to polling
-        function called to end the helper subroutine
-        if another functin is running posting for this
-        will cause it to throw an exception
-        ends request_to_pause
-        helper thread only
-        """
-        self.print_helper_label( "end_helper " )
-        #self.helper_label.config( text = "test_ports testing ports" )
-        #self.print_info_string( "Helper Stopped" )
-        #self.post_to_queue(  "info", None, ( "Helper Stopped", ) )
-        self.print_info_string( "Helper interrupted" )    # rec send info
-        self.logger.debug(  "end_helper( ) Helper interrupted" )
-
-    # ------------------------------------------------
     def test_port( self, a_port, a_get, a_valid_response ):
         """
         ?? just a start for a more complete function
@@ -193,7 +183,6 @@ class HelperThread( threading.Thread ):
         ret:  success = True if open and right version
         """
         gui    = self.controller.gui    # !! this may not be so good, direct interaction with gui
-
 
         self.print_info_string( "Testing Port " + a_port + "..." )
         test_good  = False
@@ -250,6 +239,25 @@ class HelperThread( threading.Thread ):
         #self.helper_label.config( text = "test_port done " )
         return test_good
 
+
+    # ------------------------------------------------
+    def end_helper( self, ):
+        """
+        a function to interrupt the help thread and go back to polling
+        function called to end the helper subroutine
+        if another functin is running posting for this
+        will cause it to throw an exception
+        ends request_to_pause
+        helper thread only
+        """
+        self.print_helper_label( "end_helper " )
+        #self.helper_label.config( text = "test_ports testing ports" )
+        #self.print_info_string( "Helper Stopped" )
+        #self.post_to_queue(  "info", None, ( "Helper Stopped", ) )
+        self.print_info_string( "Helper interrupted" )    # rec send info
+        self.logger.debug(  "end_helper( ) Helper interrupted" )
+
+
     # ------------------------------------------------
     def print_info_string( self, text ):
         """
@@ -264,29 +272,6 @@ class HelperThread( threading.Thread ):
         return
 
     # ------------------------------------------------
-    def post_info_stringxxxxx( self, text ):
-        """
-        call from: helper only
-        post info string for printing in gui, does not block the gui
-        leaving unchanged
-        helper thread only
-        as an alternative use the queue which does not block the gui
-        """
-        "rec"
-        gui    = self.controller.gui
-        # self.release_gui_for( .01 )
-        #self.helper_label.config( text = "end_helper " )
-        #self.helper_label.config( text = "test_ports testing ports" )
-        if self.controller.request_to_pause:
-              gui.print_info_string( text )
-        else:
-            self.release_gui_for( .01 )
-            gui.print_info_string( text )
-            self.release_gui_for( .0 )
-
-        return
-
-    # ------------------------------------------------
     def print_helper_label( self, a_text ):
         """
         from helper thread, no need for lock   !! this may not be true, comment out now post to queue later -- did not fix my problem
@@ -294,19 +279,19 @@ class HelperThread( threading.Thread ):
         """
         #self.helper_label.config( text = a_text )  # old bad way
         #self.controller.gui.show_item( "helper_info", a_text )
-        # add a release untill   def release_gui_for_until
+        # add a release until   def release_gui_for_until
 
     # ------------------------------------------------
     def sleep_ht_with_msg_for( self, for_time,  msg, repeat_time, show_time ):
         """
-
+        ?? which thread  looks like intended for the helper thread
         count down a time, with a message every repeat_time to gui
         """
         pass
         time_left  = for_time
         # message here
         while( True ):
-            show_msg = msg + " ( time left: " + str( time_left) + ")"
+            show_msg = msg + " ( starting in: " + str( time_left) + " sec )"
             self.print_info_string( show_msg )
             if  time_left > repeat_time:
                  self.sleep_ht_for( repeat_time )
@@ -321,8 +306,8 @@ class HelperThread( threading.Thread ):
     def sleep_ht_for( self, for_time ):
         """
         this is a way to pause action in the ht while keeping
-        recieve active
-        have it end if anything is recieved??
+        receive active
+        have it end if anything is received??
         args: for_time number of seconds to stay here
         """
         wait_till   = time.time( ) + for_time
@@ -342,17 +327,17 @@ class HelperThread( threading.Thread ):
     # ------------------------------------------------
     def release_gui_untilxxxx( self, until_time ):
         """
-        arg: until_time ( a time, like time.time() ) untill which the gui will be
+        arg: until_time ( a time, like time.time() ) until which the gui will be
         ret: zip
         throws: HelperException if anything comes in on queue
 
-        released to run, if until_time = 0. then gui relaeased "forever"
+        released to run, if until_time = 0. then gui released "forever"
         !! not implemented
-        release for time, then relock, if for_time == 0.
+        release for time, then re-lock, if for_time == 0.
         release "forever"
-        release the main thead from its polling loop for time in float seconds
+        release the main thread from its polling loop for time in float seconds
         can also call to get controller to pause again
-        need to keep recieving, and keep eye on queue
+        need to keep receiving, and keep eye on queue
         () = self.release_gui_for( time )
         also risk of lock up if controller does not respond
         have an exit with exception ??
@@ -392,11 +377,11 @@ class HelperThread( threading.Thread ):
     # ------------------------------------------------
     def release_gui_forxxxx( self, for_time ):
         """
-        release for time, then relock, if for_time == 0.
+        release for time, then re lock, if for_time == 0.
         release "forever"
-        release the main thead from its polling loop for time in float seconds
+        release the main thread from its polling loop for time in float seconds
         can also call to get controller to pause again
-        need to keep recieving, and keep eye on queue
+        need to keep receiving, and keep eye on queue
         () = self.release_gui_for( time )
         also risk of lock up if controller does not respond
         have an exit with exception ??
@@ -458,7 +443,7 @@ class HelperThread( threading.Thread ):
 
 #        if action == "call":
 #              self.change_function   = ( True, function, function_args  )   # why is return not good enough looks dead
-#        if action = "rec":            # instead of this take over the recive task while active
+#        if action = "rec":            # instead of this take over the receive task while active
 #              pass
         return ( action, function, function_args )
 
@@ -516,7 +501,7 @@ class HelperThread( threading.Thread ):
         (       )
 
         ?? add flag to control throwing of exception  or message for exception
-        sends a string, recieves a string, in meantime checks queue
+        sends a string, receives a string, in meantime checks queue
 
         receive data via the comm port
         display data
@@ -532,7 +517,7 @@ class HelperThread( threading.Thread ):
         receive only full strings ending with /n else
         accumulated in the driver /n is stripped
         call: ht
-        ret:  non empt string or throws exception
+        ret:  non empty string or throws exception
         """
         #self.logger.info( "helper: send_receive() entered",  )
         wait_till   = time.time( ) + for_time
@@ -549,17 +534,17 @@ class HelperThread( threading.Thread ):
              # data = self.controller.receive()
              data = self.receive()
              if not( data == "" ):
-                 return data
+                 return data          # this is the planned exit
 
              if  ( self.queue_to_helper.empty() ):
                  pass
              else:
                  # ( action, function, function_args ) = self.rec_from_queue()
                  # queue_item  = self.rec_from_queue()
-                 self.logger.info( "raise HelperException in send_receive",  )
+                 self.logger.info( "raise HelperException in send_receive queue to helper not empty -- send_data = >" + send_data +  "<"  )
                  raise HelperException( 'in send_receive' ) #, queue_item )
-        self.logger.info( "send_receive() timeout",  )
-        return ""  # timeout
+        self.logger.info( "send_receive() timeout -- send_data = >" + send_data +"<",   )
+        return ""  # timeout did not get data <> ""
 
     # -------------------------------------------------------
     def receive( self,  ):
@@ -618,19 +603,19 @@ class HelperThread( threading.Thread ):
                 # try again but give polling a chance to catch up
                 print( "helper: queue full looping" )
                 self.logger.error( "helper post_to_queue()  queue full looping: " +str( action ) )
-                # protect against infinit loop if queue is not emptied
+                # protect against infinite loop if queue is not emptied
                 if self.ix_queue > ix_queue_max:
                     #print "too much queue looping"
                     self.logger.error( "helper: post_to_queue() too much queue looping: " +str( action )  )
                     pass
                 else:
                     loop_flag = True
-                    time.sleep( self.parameters.queue_sleep )   # so we do not loop to fast 
+                    time.sleep( self.parameters.queue_sleep )   # so we do not loop to fast
 
     # ------------------------------------------------
     def toggle_lockxxxxx(  self,  ):
         """
-        gui thered call back from test button
+        gui thread back from test button
         this is just a test function
         """
         # just for testing to see if can pass recieve back and forth
@@ -642,7 +627,7 @@ class HelperThread( threading.Thread ):
     # ------------------------------------------------
     def write_csv(  self, data_string  ):
         """
-        write a string followed by data_string comma seperated values,
+        write a string followed by data_string comma separated values,
         args: data_string data to be written, should have commas in place ie: "123., 456., 10"
         call: helper thread only
         ret: nothing

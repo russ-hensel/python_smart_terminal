@@ -396,8 +396,17 @@ class RS232Driver( object ):
             return ""
 
         #now finish up save some for buffer and return what have so far
-        ret_string          = ( self.ba_rec_buff[ 0: ix ] ).decode( encoding='UTF-8' )
-
+        # have had error here, which kills app, seems based on bad data back, in that case we will retuns say ng ?
+        # UnicodeDecodeError
+        # may be a way to have function ignore as well 
+        try:
+        
+            ret_string          = ( self.ba_rec_buff[ 0: ix ] ).decode( encoding='UTF-8' )
+            
+        except UnicodeDecodeError as exception:
+            self.logger.critical( "decode error " + str( exception  )  )
+            #print( exception )           
+            ret_string           = "ng"
         # data past eol if any
         self.ba_rec_buff    = self.ba_rec_buff[ ix + 1: ]    # should be ok even if out of range should get rid of eol
 

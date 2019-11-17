@@ -22,8 +22,9 @@ import  logging
 import  pyperclip
 from    tkinter import *   # is added everywhere since a gui assume tkinter namespace
 import  sys
+import  ctypes
 
-# local
+# ------ local
 from    app_global import AppGlobal
 
 
@@ -74,9 +75,18 @@ class GUI( object ):
         self.gui_running        = False
         self.root               = Tk()    # this is the tkinter root for the GUI move to gui after new working well plus bunch after here
 
+#        print( "next set icon " + str( self.parameters.os_win ) )
         if self.parameters.os_win:
-            # icon may cause problem in linux for now only use in win
-            self.root.iconbitmap( self.parameters.icon )
+            # from qt - How to set application's taskbar icon in Windows 7 - Stack Overflow
+            # https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105
+
+            icon = self.parameters.icon
+            if not( icon is None ):
+                print( "set icon "  + str( icon ))
+                ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(icon)
+                self.root.iconbitmap( icon )
+            else:
+                print( "no icon "  + str( icon ))
 
         a_title   = self.controller.app_name + " version: " + self.controller.version + " mode: " + self.parameters.mode
         if self.controller.parmeters_x    != "none":
@@ -86,6 +96,25 @@ class GUI( object ):
         self.root.title( a_title )
 
         self.root.geometry( self.parameters.win_geometry )
+        if  self.parameters.win_max:
+            #self.root.wm_attributes( '-zoomed', True )
+            # self.root.attributes( '-zoomed', True )
+            #self.root.attributes( '-zoomed',)
+            #self.root.state('zoomed')   # maybe just windows where it does seem to work
+            # https://www.tcl.tk/man/tcl/TkCmd/wm.htm#m8   # also google python wm state zoomed
+
+            #he most pythonic is" root.wm_state('zoomed'), as mentioned by @J.F.Sebastian
+            #To show maximized window with title bar use the 'zoomed' attribute
+
+            # self.root.wm_state('zoomed')  no error on windows but is it a help
+            # self.root.attributes('-zoomed', True)  # error in windows
+            if  self.parameters.os_win:
+                self.root.state('zoomed')   # maybe just windows where it does seem to work
+            else: # as close as I can get so far for linux
+                #w = self.root.winfo_screenwidth()
+                #h = self.root.winfo_screenheight()
+                self.root.geometry("%dx%d+0+0" % (self.root.winfo_screenwidth(), self.root.winfo_screenheight() ))
+
 
         self.logger             = logging.getLogger( self.controller.logger_id + ".gui")
         #self.logger.info( "in class gui.GUI init")
@@ -113,7 +142,7 @@ class GUI( object ):
         self.prefix_rec          = self.parameters.prefix_rec
         self.prefix_info         = self.parameters.prefix_info
 
-        #------ constants for controlling layout ------
+        #------ constants for controlling layout move to gui helper ?? also have a gui builder ?? ------
         self.button_width         = 6
 
         self.button_padx          = "2m"
@@ -132,7 +161,7 @@ class GUI( object ):
 
         #------ END constants for controlling layout ------
 
-        # --------- gui standards work on more have themes have in another object ?
+        # --------- gui standards work on more have themes have in another object ?  -- the gui helper
         # but there are things called themes, look for more docu
         bn_color      = "gray"
         lbl_color     = "gray"
@@ -154,7 +183,7 @@ class GUI( object ):
         self.root.grid_rowconfigure(    0, weight=1 )
 
         if self.parameters.id_height > 0:
-            a_frame  = self.__make_id_frame__( self.root_b,  )
+            a_frame  = self.make_id_frame( self.root_b,  )
             a_frame.grid( row=next_frame, column=0, sticky = E + W + N + S )   # + N + S  )  # actually only expands horiz
             next_frame += 1
 
@@ -177,7 +206,7 @@ class GUI( object ):
                  a_frame.grid( row=next_frame, column=0, sticky = E + W + N + S )   # + N + S  )  # actually only expands horiz
                  next_frame += 1
 
-        a_frame  = self.__make_send_frame__( self.root_b, )
+        a_frame  = self.make_send_frame( self.root_b, )
         a_frame.grid( row=next_frame, column=0, sticky= E + W + N  )
         next_frame += 1
 
@@ -196,6 +225,11 @@ class GUI( object ):
         #print "self.next_frame configure", self.next_frame
         self.root_b.grid_rowconfigure( ( next_frame - 1 ), weight=1 )
 
+        if self.parameters.bot_spacer_height > 0:
+            a_frame  = self.make_bot_spacer_frame( self.root_b,  )
+            a_frame.grid( row=next_frame, column=0, sticky = E + W + N + S )   # + N + S  )  # actually only expands horiz
+            next_frame += 1
+
         # build with the control, try that
         #self.db_parm_dict        =  { "status":  self.lbl_db_status,   "host"  self.lbl_db_host  }
 
@@ -203,9 +237,19 @@ class GUI( object ):
 
     #------ build frames  ------------------------
     # ------------------------------------------
-    def __make_id_frame__( self, parent, ):
+    def make_id_frame( self, parent, ):
         """
         make a frame to help ID the app, initially a color band.
+        """
+        a_frame  = Frame( parent, width=300, height=self.parameters.id_height, bg=self.parameters.id_color, relief=RAISED, borderwidth=1 )
+
+        return a_frame
+
+    # ------------------------------------------
+    def make_bot_spacer_frame( self, parent, ):
+        """
+        make a frame to lift rec off bottom of screen
+        !! add adj height in parms
         """
         a_frame  = Frame( parent, width=300, height=20, bg=self.parameters.id_color, relief=RAISED, borderwidth=1 )
 
@@ -285,9 +329,6 @@ class GUI( object ):
         ( lrow, lcol, self.lbl_db_user )      = self.__make_label__( a_frame, lrow, lcol, "user", )
         self.show_dict[ "db_user" ]           = self.lbl_db_user
 
-        #( lrow, lcol, a_lbl        )          = self.__make_label__( a_frame, lrow, lcol, "Extraaaa", "extra", self.show_dict )
-        #self.show_dict[ "Extra" ]           = a_lbl
-
         return  a_frame
 
      # ------------------------------------------
@@ -357,10 +398,22 @@ class GUI( object ):
         a_button.config( command = self.cb_graph )
         a_button.pack( side = LEFT )
 
-#       keeep for a test button
+        #       keeep for a test button
         a_button = Button( a_frame , width=10, height=2, text = "Test" )
         #a_button.config( command = self.controller.cb_test )
         a_button.config( command = self.cb_test_1 )
+        a_button.pack( side = LEFT )
+
+        #       keeep for a test button
+        a_button = Button( a_frame , width=10, height=2, text = "Help" )
+        #a_button.config( command = self.controller.cb_test )
+        a_button.config( command = self.cb_test_1 )
+        a_button.pack( side = LEFT )
+
+#       keeep for a test button
+        a_button = Button( a_frame , width=10, height=2, text = "About" )
+        #a_button.config( command = self.controller.cb_test )
+        a_button.config( command = AppGlobal.about )
         a_button.pack( side = LEFT )
 
         return a_frame
@@ -371,7 +424,7 @@ class GUI( object ):
         make a new send frame, for just one button and text entry to send
         return frame for placement
         """
-        # print "__make_send_frame__"  color does not really work here as sends fill area
+        # print "make_send_frame"  color does not really work here as sends fill area
         send_frame  = Frame( parent, width=800, height=200, bg=self.parameters.id_color, relief=RAISED, borderwidth=1 )
 
         a_text = Entry( send_frame , ) # width=50, ) # height=2 )
@@ -404,11 +457,11 @@ class GUI( object ):
         return send_frame
 
     # ------------------------------------------
-    def __make_send_frame__( self, parent,  ):  # if this were a class then could access its variables later
+    def make_send_frame( self, parent,  ):  # if this were a class then could access its variables later
         """
         make a new send frame containing little send frames
         """
-        # print "__make_send_frame__"  color does not really work here as sends fill area
+        # print "make_send_frame"  color does not really work here as sends fill area
 
         send_frame        = Frame( parent, width=400, height=200, bg = self.parameters.bk_color, relief=RAISED, borderwidth=1 )
         self.ix_send      = 0
@@ -418,6 +471,7 @@ class GUI( object ):
 
         # convert the parameter send_ctrls to our tuple form to make later processing easier
         ix_max_row        = self.parameters.max_send_rows
+        #ix_max_row        = 6
         parm_send_ctrls   = self.parameters.send_ctrls
         send_ctrls        = []
 
@@ -457,16 +511,14 @@ class GUI( object ):
         """
         make a new send frame, for just one button and text entry to send
         """
-
 #        button heitht
 #        button width
 #        button justify
 #        button wrap
 
-
         ( b_text, s_text, s_enable )  = ctrl_info
 
-        # print "__make_send_frame__"  color does not really work here as sends fill area
+        # print "make_send_frame"  color does not really work here as sends fill area
         #send_frame  = Frame( parent, width=300, height=200, bg=self.parameters.bk_color, relief=RAISED, borderwidth=1 )  # maybe color should always be gray
         send_frame     = Frame( parent, width=400, height=300, bg="gray", relief = RAISED, borderwidth = 1 )  # maybe color should always be gray
         #send_frame     = Frame( parent,
@@ -476,7 +528,7 @@ class GUI( object ):
 
         a_text                 = Entry( send_frame , width = self.parameters.send_width , ) # height=2 )
         a_text.configure( bg   = self.parameters.send_bg    )    #  "white" )
-        
+
         a_text.delete(0, END)    # this may be bad syntax when use eleswher
         a_text.insert( 0, s_text )
 
@@ -532,7 +584,6 @@ class GUI( object ):
         iframe.grid_rowconfigure(    0, weight=1 )
 
         # now into the button frame bframe
-
         # spacer
         s_frame = Frame( bframe, bg ="green", height=20 ) # width=30  )
         s_frame.grid( row=0, column=0  )
@@ -594,13 +645,23 @@ class GUI( object ):
     def run( self,  ):
         """
         run the gui
-        will block untill destroped, except for polling method in controller
+        will block untill destroped, except for polling method in controller -- extension?
+        add python loging to note state of the comm log
         """
         # move from controller to decouple type of gui
         self.gui_running        = True
         self.root.after( self.parameters.gt_delta_t, self.controller.polling )
+
+        if self.parameters.comm_loging_fn is not None:
+            self.comm_log = open( self.parameters.comm_loging_fn, "a" )
+        else:
+            self.comm_log = None
+
+
         self.root.mainloop()
         self.gui_running        = False
+        if self.comm_log is not None:
+            self.comm_log.close()
 
     # ------------------------------------------
     def close( self, ):
@@ -684,6 +745,7 @@ class GUI( object ):
     def print_info_string( self, data ):
         """
         add info prefix and new line suffix and show in recieve area
+        gui.print_info_string( "" )
         """
         sdata = self.prefix_info +  data  + "\n"    # how did data get to be an int and cause error ??
         self.print_string( sdata )
@@ -714,6 +776,11 @@ class GUI( object ):
         delete if there are too many lines in the area
         """
         self.rec_text.insert( END, a_string, )      # this is going wrong, why how
+
+        if  self.comm_log is not None:    # logging
+            self.comm_log.write( a_string )
+
+
         try:
              numlines = int( self.rec_text.index( 'end - 1 line' ).split('.')[0] )  # !! beware int( None ) how could it happen ?? it did this is new
         except Exception  as exception:
@@ -722,8 +789,8 @@ class GUI( object ):
             print( str( exception ) )
             numlines = 0
         if numlines > self.max_lines:
-            cut  = int( numlines/2  )   # lines to keep/remove cut may need to be int 
-            # remove excess text  - cut may need to be int 
+            cut  = int( numlines/2  )   # lines to keep/remove cut may need to be int
+            # remove excess text  - cut may need to be int
             self.rec_text.delete( 1.0, str( cut ) + ".0" )
             #msg     = "Delete from test area at " + str( cut )
             #self.logger.info( msg )
@@ -901,7 +968,7 @@ class GUI( object ):
             self.rec_text.delete( 1.0, END )
 
         elif btext == self.BN_PORTS:
-            self.controller.ports()
+            self.controller.probe_ports()
             pass
 
         #        elif btext == self.BN_SND_ARRAY:
@@ -945,10 +1012,10 @@ class GUI( object ):
     # ------------------------------------------
     def do_auto_scroll( self,  ):
         """
-        pass, not needed, place holder
+        pass, not needed, place holder  see print_string
         """
         # print "do_auto_scroll"
-        # not going to involve controller
+        # not going to involve controller  -- so processed where in print...
         pass
         return
 
