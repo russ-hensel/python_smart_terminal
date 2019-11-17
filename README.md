@@ -6,7 +6,19 @@ What:
 Status: 
   Seems to be working well, actively working on parts of it for my dyslecic clock.
   as of Sept 2018 major revisions, contact me if you would like an update.
+  Intended for those with some Python experience who can add the files to their Python development environment ( no install features for   this code ). Some dependencies will need to be installed, probably prompted by error messages. Editing of the parameter file 
+  should be   easier for those with Python experience. Users should find some useful documentation in the code, this is still a work in     progress. Much code has been lifted from other projects of mine, some artifacts of the other projects remain.  Some unnecessary files
+  left over from refactoring, will be removed soon.
+  
+Enviroment: 
+* Program should run on any OS supporting Python 3.6. ( this is new, to let me use f"" in particular )
+* This should include Windows, Mac, Linux, and Raspberry Pi.  
+* So far tested on:
+** Windows 
+** Raspberry Pi ( need retest for python 3.6 coming soon.
+** More coming... ( I do not have a mac ) 
 
+ 
 ``` 
 	Standard Disclaimer:
 		If you have more than a casual interest in this project you should contact me 
