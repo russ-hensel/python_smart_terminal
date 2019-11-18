@@ -43,12 +43,12 @@ class Parameters( object ):
         # pick one by un-commenting it.
 
 
-        #self.tutorial_example_mode()     # simple setup for documentation and basic terminal
+        self.tutorial_example_mode()     # simple setup for documentation and basic terminal
         #self.accel_demo_mode()           #
         #self.controlino_mode()           #
 
         #self.ddclock_mode()
-        self.ddclock_david()
+        #self.ddclock_david()
         #self.ddclock_test_mode()
         #self.ddclock_demo_1()
         #self.ddclock_demo_2()

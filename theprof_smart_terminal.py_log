@@ -379,3 +379,31 @@ Stack (most recent call last):
 2019-11-17 14:12:05,064 - smart_terminal.helper - INFO - raise HelperException in send_receive queue to helper not empty -- send_data = >l156<
 2019-11-17 14:12:05,064 - smart_terminal.helper - INFO - smart_terminal_helper.HelperThread throw execption from in send_receive
 2019-11-17 14:12:05,165 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 19:40:28,810 - smart_terminal - INFO - Done config_logger
+2019-11-17 19:40:28,810 - smart_terminal - Notice - 
+2019-11-17 19:40:28,810 - smart_terminal - Notice - 
+2019-11-17 19:40:28,810 - smart_terminal - Notice - 
+2019-11-17 19:40:28,810 - smart_terminal - Notice - ============================
+2019-11-17 19:40:28,810 - smart_terminal - Notice - 
+2019-11-17 19:40:28,810 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = ddclock_david
+2019-11-17 19:40:28,810 - smart_terminal - Notice - 
+2019-11-17 19:40:28,810 - smart_terminal - Notice - command line arg 0 = D:\for_github\python_smart_terminal\parameters.py
+2019-11-17 19:40:28,810 - smart_terminal - Notice - current directory D:\for_github\python_smart_terminal
+2019-11-17 19:40:28,810 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 19:40:28,810 - smart_terminal - Notice - Time now: 2019-11-18 00:40:28
+2019-11-17 19:40:28,817 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 19:40:31,176 - smart_terminal - Notice - SmartTerminal: all done
+2019-11-17 19:41:05,927 - smart_terminal - INFO - Done config_logger
+2019-11-17 19:41:05,927 - smart_terminal - Notice - 
+2019-11-17 19:41:05,928 - smart_terminal - Notice - 
+2019-11-17 19:41:05,928 - smart_terminal - Notice - 
+2019-11-17 19:41:05,928 - smart_terminal - Notice - ============================
+2019-11-17 19:41:05,928 - smart_terminal - Notice - 
+2019-11-17 19:41:05,928 - smart_terminal - Notice - Running SmartTerminal version = Ver5: 2019 09 08.1 mode = TutorialExample
+2019-11-17 19:41:05,928 - smart_terminal - Notice - 
+2019-11-17 19:41:05,928 - smart_terminal - Notice - command line arg 0 = D:\for_github\python_smart_terminal\parameters.py
+2019-11-17 19:41:05,928 - smart_terminal - Notice - current directory D:\for_github\python_smart_terminal
+2019-11-17 19:41:05,928 - smart_terminal - Notice - COMPUTERNAME THEPROF
+2019-11-17 19:41:05,928 - smart_terminal - Notice - Time now: 2019-11-18 00:41:05
+2019-11-17 19:41:05,932 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2019-11-17 19:41:11,261 - smart_terminal - Notice - SmartTerminal: all done
