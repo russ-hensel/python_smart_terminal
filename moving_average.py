@@ -4,13 +4,24 @@
 # http://rosettacode.org/wiki/Averages/Simple_moving_average
 
 
+"""
+
+(for smart_terminal.py ) this does a moving average for the enviromental monitor and other
+data logging applications
+
+
+"""
+
+
+
 from collections import deque
 
-"""
-Computes moving or running averages, averages are always floats
-"""
+
 
 class Movingaverage():
+    """
+    Computes moving or running averages, averages are always floats
+    """
     def __init__(self, period):
         """
         construct, set the period
@@ -61,7 +72,7 @@ class Movingaverage():
 # ---------------------------------------------
 if __name__ == '__main__':
     """
-    test of moving average
+    little test of moving average
     """
     for period in [3, 5]:
         print( "" )

@@ -2,7 +2,7 @@
 
 
 """
-ext_process_ddc.pu
+ext_process_ddc.py  support for of (smart_terminal.py)
 extended processing for ddclock: this does the actions for the ddclock
 
 """
@@ -29,14 +29,12 @@ class ChimeAndTime(   ):
     # ------------------------------------------
     def __init__( self,    ):
 
+        # may have been too much commenting out here added some back in feb 16 2020 think ok
         # self.time_mode                  = AppGlobal.clock_mode   #  "run"    # "run_demo"    demo .... get from parameters  AppGlobal.parameters.   ....
         self.led_chime_values           = AppGlobal.parameters.led_chime_values
         self.led_background_values      = AppGlobal.parameters.led_background_values
-        self.chime_enabled              = True    # not implemented !!
-
-
-        self.init_time()
-
+        # self.chime_enabled              = True    # not implemented !!
+        # self.init_time()
 
 #        # current_ what we just computed last_ the last sent to the clock
 #        self.last_datetime      = None     # if none causes time to be initialized
@@ -57,7 +55,6 @@ class ChimeAndTime(   ):
 #        self.current_led_tick   = 0        # ticks are the units ( now 10 sec ) at which the led brightness may be changed
 #                                           # have a function for this
 
-
         # hand speed and acceleration -- could move to parms
         self.std_acc_minute     = 100
         self.std_speed_minute   = 100
@@ -71,18 +68,19 @@ class ChimeAndTime(   ):
 #                                     1: "220", 2: "160", 3: "80",  4: "40",  6: "20",   6: "0",    7: "0",}
 
         self.set_wait_time      = .10        # what units what mean  --- for arduino response
+
     # ------------------------------------------
     def init_time( self,    ):
         """
-        init all times, used at init, and used to restart clock so we get all chimes 
-        think need to to last and current 
+        init all times, used at init, and used to restart clock so we get all chimes
+        think need to to last and current
         """
         self.last_datetime      = None     # if none causes time to be initialized
 
         self.last_hour          = None     # last hour set
         self.current_hour       = None
 
-        self.current_hour_24    = None     # used for backgrount led
+        self.current_hour_24    = None     # used for background led
 
         self.last_minute        = None     # last minute set
         self.current_minute     = None
@@ -94,8 +92,8 @@ class ChimeAndTime(   ):
         self.last_led_tick      = None
         self.current_led_tick   = 0        # ticks are the units ( now 10 sec ) at which the led brightness may be changed
                                            # have a function for this
-        self.hour_rotate_index  = 0        # for hour_rotating_chime 
-        
+        self.hour_rotate_index  = 0        # for hour_rotating_chime
+
     # ------------------------------------------
     def last_eq_none( self,    ):
         """
@@ -130,13 +128,13 @@ class ChimeAndTime(   ):
 
         now      = self.compute_now()
 
-        self.current_hour_24    = now.hour                        # what are the valid hours 0 <= hour < 24,datetime.hour  In range(24) does not include 24                                                                     
+        self.current_hour_24    = now.hour                # what are the valid hours 0 <= hour < 24,datetime.hour  In range(24) does not include 24
         self.current_hour       = self.current_hour_24
 
-        # normalize for 12 hr clock -- but include 12 not 0 for midnight ... this is I think the consistent decision but may need to be  revisited 
+        # normalize for 12 hr clock -- but include 12 not 0 for midnight ... this is I think the consistent decision but may need to be  revisited
         if   self.current_hour == 0:
              self.current_hour  = 12
-             
+
         elif self.current_hour > 12:
             self.current_hour   -= 12
 
@@ -160,7 +158,7 @@ class ChimeAndTime(   ):
 
         if self.current_led_minute is not None:
 #            print( self.current_led_minute, flush = True )
-            # optmize this later
+            # optimize this later
 
             # self.current_led_tick   is translated to a value in conjunction with self.current_led_minute
 
@@ -214,7 +212,7 @@ class ChimeAndTime(   ):
         msg     = "hour chime: " + str( self.current_hour )
         #print( msg )
         AppGlobal.helper_thread.print_info_string( msg )
-        # !! more chime types inc none set up as a dict, change to 24 hour enabled 
+        # !! more chime types inc none set up as a dict, change to 24 hour enabled
 
         #  self.minute_chime(  60 )   old code .... did this do something useful?? !!
 
@@ -225,16 +223,14 @@ class ChimeAndTime(   ):
 
         elif  chime_type == "assigned":
               chime      = self.hour_assigned_chime( self.current_hour )
-              
+
         elif  chime_type == "rotate":
               chime      = self.hour_rotate_chime( self.current_hour )
-              
 
         self.do_hour_chime( chime,  )
         self.last_hour    = self.current_hour
         self.minute_chime(  )
 
-        # !!     self.display_time()
         AppGlobal.helper_thread_ext.display_time()
 
     # -------------------------------------------------
@@ -245,7 +241,6 @@ class ChimeAndTime(   ):
 
         ?? do hour dance if appropriate
         Args:    a_minute   .. used as arg to facilitate demo mode
-
         """
         self.led_chime()
         a_minute      = self.current_minute
@@ -278,9 +273,7 @@ class ChimeAndTime(   ):
         """
         Purpose:  do led, if it is time
 
-
         Args:   self.
-
         """
         if self.last_led_tick == self.current_led_tick:
             return     # no chime
@@ -320,7 +313,7 @@ class ChimeAndTime(   ):
           """
   #          print( "called do_minute_chime" )
   #          return
-          #
+
           if AppGlobal.parameters.minute_off:
               return
           send_data   = "c2 " + a_chime + " " + str( a_minute )
@@ -365,7 +358,7 @@ class ChimeAndTime(   ):
                 bright during the day
                 dim at night
                 off for karen
-        Note: for effiency may save old value so the recalc need not be made
+        Note: for efficiency may save old value so the recalculate need not be made
         Args:
             self.current_hour_24
         Return:
@@ -397,10 +390,10 @@ class ChimeAndTime(   ):
         try:
             chime_type    = AppGlobal.parameters.hour_chime_dict[ a_hour ]
         except KeyError as exception:
-            chime_type    = 0 
+            chime_type    = 0
             msg           = " key error in hour_assigned_chime for key a hour " + str( a_hour ) + " default to 0"
-            self.logger.debug( msg ) 
-            
+            self.logger.debug( msg )
+
         return( chime_type )
 
     # -------------------------------------------------
@@ -413,26 +406,26 @@ class ChimeAndTime(   ):
 
         """
         return( str( random.randrange( 0, 13 ) ) )  # !! update to match chimes in....
-        
+
     # -------------------------------------------------
     def hour_rotate_chime( self, a_hour ):  #
         """
-        advance by some number thru the total number of chimes
+        advance by some number through the total number of chimes
         the advance should probably be relatively prime to the total
-        number of availabe chimes
-        
+        number of available chimes
+
         Arg: a_hour   not used but signature same for all
         Return:  chime_type,  number as a string
 
         """
         self.hour_rotate_index  += AppGlobal.parameters.hour_chime_rotate_amt
-        
+
         if self.hour_rotate_index >= len( AppGlobal.parameters.hour_chime_rotate_list ):
             self.hour_rotate_index = 0
-        
-        return( AppGlobal.parameters.hour_chime_rotate_list[ self.hour_rotate_index ] ) 
-        
-  
+
+        return( AppGlobal.parameters.hour_chime_rotate_list[ self.hour_rotate_index ] )
+
+
 # ================= Class =======================
 #
 class DDCProcessing( abc_def.ABCProcessing ):
@@ -456,7 +449,7 @@ class DDCProcessing( abc_def.ABCProcessing ):
         self.logger             = logging.getLogger( self.controller.logger_id + ".DDCProcessing")
         self.logger.debug( "in class DDCProcessing init" ) # logger not currently used by here
 
-        #self.minute_delat       = datetime.timedelta( minutes = 1 )   # just a convient unit
+        #self.minute_delat       = datetime.timedelta( minutes = 1 )   # just a convenient unit
 
 #        self.time               = None       # time.time() # set in set_time -- taken as same for all measurements
 
@@ -466,7 +459,7 @@ class DDCProcessing( abc_def.ABCProcessing ):
 
         self.button_actions     = None     # set later
 
-        # these are int value for the aruino interface actually divide by 10 and converted to floats
+        # these are int value for the arduino interface actually divide by 10 and converted to floats
 
         # some of these not in parms, phase these out
 
@@ -751,18 +744,17 @@ class DDCProcessing( abc_def.ABCProcessing ):
         AppGlobal.helper_thread.processing_ext_enabled   = False
         # delay perhaps better move to other thread
 #        self.chime_and_time.last_datetime                = None
-        
-        self.chime_and_time.init_time()    
-        
-        
-        # should send init set of hands for minuet, hour, led, this is in gt so 
+
+        self.chime_and_time.init_time()
+
+        # should send init set of hands for minuet, hour, led, this is in gt so
         # could post over, but it would not process for a bit so could
-        # untill enabled, but running here may be ok
+        # until enabled, but running here may be ok
         # try out in gt
         # try just running polling
-        
+
         self.chime_and_time.polling()
-        
+
         AppGlobal.helper_thread.processing_ext_enabled   = True
 
     # -------------------------------------------------
@@ -1018,12 +1010,14 @@ if __name__ == '__main__':
     can we make one here
     """
     print( "" )
-    print( " ========== starting SmartTerminal from gr_processing.py ==============" )
+    print( " ========== starting SmartTerminal from ext_process.ddc.py ==============" )
     import smart_terminal
     a_app = smart_terminal.SmartTerminal(  )
 
 
 # ======================= eof =====================
+
+
 
 
 

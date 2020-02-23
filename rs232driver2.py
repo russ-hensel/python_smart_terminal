@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
+for support of (smart_terminal.py)
 this driver is for rs232 comm ports
 it returns only full lines
 eol is expected to be a cr,
@@ -349,7 +350,8 @@ class RS232Driver( object ):
         self.driver.write( bytearray(data, 'utf8' ) )    # "ascii"  'utf8'
 
         return
-#----------------------------------------
+
+    #----------------------------------------
     def getRecString( self, ):
         """
         version 3 -- revise for python 3 - start with byte arrays to support delete then convert to strings quickly
@@ -398,14 +400,14 @@ class RS232Driver( object ):
         #now finish up save some for buffer and return what have so far
         # have had error here, which kills app, seems based on bad data back, in that case we will retuns say ng ?
         # UnicodeDecodeError
-        # may be a way to have function ignore as well 
+        # may be a way to have function ignore as well
         try:
-        
+
             ret_string          = ( self.ba_rec_buff[ 0: ix ] ).decode( encoding='UTF-8' )
-            
+
         except UnicodeDecodeError as exception:
             self.logger.critical( "decode error " + str( exception  )  )
-            #print( exception )           
+            #print( exception )
             ret_string           = "ng"
         # data past eol if any
         self.ba_rec_buff    = self.ba_rec_buff[ ix + 1: ]    # should be ok even if out of range should get rid of eol

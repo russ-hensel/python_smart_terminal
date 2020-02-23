@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Purpose:
-	second thread support for smart_terminal.SmartTerminal 
+	second thread support for smart_terminal.SmartTerminal  in smart_terminal.py
 
 
 """
@@ -71,20 +71,26 @@ class HelperThread( threading.Thread ):
     # ------------------------------------------------
     def run( self ):
 
-        try:
-            self.polling()   # just to match the names
+        # may want a parameter to choose between these two ??
 
-        except Exception as err:
-            self.logger.critical( "-------exception in helper ----------" )
-            self.logger.critical(  err,  stack_info=True )   # just where I am full trace back most info
+        self.polling()   # just to match the names
+
+        # try:
+        #     self.polling()   # just to match the names
+
+        # except Exception as err:
+        #     self.logger.critical( "-------exception in helper ----------" )
+        #     self.logger.critical(  err,  stack_info=True )   # just where I am full trace back most info
 
     # ------------------------------------------------
     def polling(self):
         """
         started from gui this is an infinite loop monitoring the queue
         queue_to_helper
+        this does not depend on the gui polling
+        it does trigger polling in other helper objects
         """
-        self.logger.debug(  "smart_terminal_helper.polling()  entered " )
+        self.logger.debug( "smart_terminal_helper.polling()  entered " )
 
         while True:
             #print( "polling" )
@@ -94,7 +100,8 @@ class HelperThread( threading.Thread ):
             try:
                 ( action, function, function_args ) = self.rec_from_queue()
                 if action != "":
-                    self.logger.debug(  "smart_terminal_helper.polling()  " + action + " " + str( function ) + " " + str( function_args) )  # ?? comment out
+                    msg    = f"smart_terminal_helper.polling() {action} + {function} {function_args}"
+                    self.logger.debug( msg  )  # ?? comment out
                 if action == "call":
                     self.logger.debug(  "smart_terminal_helper.polling() making queued function call"  )
                     self.controller.helper_task_active  = True
@@ -105,12 +112,18 @@ class HelperThread( threading.Thread ):
                 if action == "stop":
                     self.controller.helper_task_active  = False
                     return  # this will kill the thread
+
                 if  ( self.processing_ext_enabled ) and ( AppGlobal.abc_processing != None ) :
                     AppGlobal.abc_processing.polling_ext()
+
             except HelperException as he:
                 self.logger.info( "smart_terminal_helper.HelperThread throw execption from " + he.msg )        # info debug...
+                self.logger.error( he, exc_info=True )  # do we get all info we need? hope so
 
-            #print( )
+                if  AppGlobal.parameters.rethrow_helper_except:
+                    raise
+                # else nothing
+
             time.sleep( self.ht_delta_t )  # ok here since it is the main pooling loop
 
         return
@@ -265,7 +278,9 @@ class HelperThread( threading.Thread ):
 
         helper thread only
         as an alternative use the queue which does not block the gui
-        AppGlobal.helper.print_info_string( text )
+        AppGlobal.helper_thread.print_info_string( text )
+        msg   = f"set_next_scare not set up {} "
+        AppGlobal.helper_thread.print_info_string( msg )
         """
         self.post_to_queue(  "info", None, ( text ) )  # info gui.print_info_string goes to reciev area
 
@@ -497,7 +512,7 @@ class HelperThread( threading.Thread ):
     # -------------------------------------------------------
     def send_receive( self, send_data, for_time  ):
         """
-        sends some data and waits for time to recieve a reply
+        sends some data and waits for time to recieve a reply  - what reply any
         (       )
 
         ?? add flag to control throwing of exception  or message for exception
@@ -522,10 +537,11 @@ class HelperThread( threading.Thread ):
         #self.logger.info( "helper: send_receive() entered",  )
         wait_till   = time.time( ) + for_time
 
+        # looks like we are sending twice, but has been working so ????
         # ?? note fix up
         #self.controller.send( send_data )      # causing a problem, post to queue ??
-        self.controller.com_driver.send( send_data )
-        self.post_to_queue(  "send", None, ( send_data, ) )   # ?? beware may not actually send so send above
+        self.controller.com_driver.send( send_data )   # this is really then send
+        self.post_to_queue(  "send", None, ( send_data, ) )   # ?? beware may not actually send so send above -- this just does the gui
 
         while ( time.time( ) < wait_till ):
 
@@ -543,7 +559,9 @@ class HelperThread( threading.Thread ):
                  # queue_item  = self.rec_from_queue()
                  self.logger.info( "raise HelperException in send_receive queue to helper not empty -- send_data = >" + send_data +  "<"  )
                  raise HelperException( 'in send_receive' ) #, queue_item )
-        self.logger.info( "send_receive() timeout -- send_data = >" + send_data +"<",   )
+
+        # !!  disable for some testing, put bak for production where it is an error
+        # self.logger.info( "send_receive() timeout -- send_data = >" + send_data +"<",   )
         return ""  # timeout did not get data <> ""
 
     # -------------------------------------------------------

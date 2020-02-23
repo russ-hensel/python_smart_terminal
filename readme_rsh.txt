@@ -17,9 +17,20 @@ last tested in Python 3.6 under windows 10
 Author: Russ Hensel
 github: https://github.com/russ-hensel/python_smart_terminal
 
+==================== DeerMe History/ToDo ==================================
+
+!! check out auto start and detect, should work as in ddc 
+!! more messages when ticktime is changed
 
 
-======================================================
+
+
+
+
+==================== DDC History/ToDo ==================================
+
+
+==================== General History/ToDo ==================================
 # History/ToDo  ** = when done   !! = planned or considerd ?? = think about
 #   Copied from mcuterminal, perhaps update from there time to time ( aug 2015 )
 
@@ -81,6 +92,69 @@ dec 2018
     try a led_chime
         for now do the same thing for every hour, ... half hour.....
         a slow rise in brightness, dim down after the chime
+
+
+
+
+============================= deer me ============================
+
+
+
+trying to use status None for a fast test, but not working out
+go back to strings, and if not fast enough do an emumeration, which is probably an over optinmizaition
+see ext_process_dm tick timer  .....
+
+How do i know when a tick time is done and time to move on ?
+
+some status    init   --- not yet run
+               run    --- running
+               done   --- done and closed, may mean to move on or not
+
+
+
+Need a way to schedule tick timers and the audo outs so for now use SetNextScare   set_next_scare
+
+
+
+------------------------- some flash sequences
+
+
+...... strobe
+
+1 tenth on, 1 tenth off, 1 tenth on  .... off for 10 seconds
+
+
+........ more strobes
+
+
+
+
+......... out of sinc blink
+
+
+lihgt A  1 sec on 1 sec off, one sec on 1 sec off....                              1000  0 1000 0
+lihgt B  1 sec on 1.1 sec off, one sec on 1.1 sec off....   all for 20 seconds     1000  0 1100 0
+
+then in python
+
+       a_tick_timer.ix_cycle_max           = 1     # close out when reach this
+
+        a_tick_timer.ix_tick_max           = 20    # roll over tick actions
+
+        # set next as necessary -- add as necessary -- access as properties
+        a_tick_timer.ix_tick_act_1         = -1
+        a_tick_timer.ix_tick_act_2         = -1
+
+        a_tick_timer.tick_strs_0            = ["i0", "l100 200 130 400", "i1", "l105 200 130 400", "s1" ]
+
+
+
+
+
+
+
+
+
 
 
 

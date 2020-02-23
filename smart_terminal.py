@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
-# A smart terminal especially for use over a serial port with microcontrollers
-#
-# last tested in Python 3.6 under windows 10
-# Author:            Russ Hensel
-# github:            https://github.com/russ-hensel/python_smart_terminal
-# documentation:     http://www.opencircuits.com/Python_Smart_Terminal
-# see the file       readme_rsh.txt file
+
+"""
+A smart terminal especially for use over a serial port with microcontrollers
+
+  last tested in Python 3.7 under windows 10
+  Author:            Russ Hensel
+  github:            https://github.com/russ-hensel/python_smart_terminal
+  documentation:     http://www.opencircuits.com/Python_Smart_Terminal
+  see the file       readme_rsh.txt file
+
+"""
 
 import logging
 import importlib
@@ -19,13 +23,11 @@ import threading
 import datetime
 
 # ----------- local imports --------------------------
-
 # import db  # hide so imported only if used
 import parameters
 import gui
 import smart_terminal_helper
-
-from   app_global import AppGlobal    # use see next lines
+from   app_global import AppGlobal
 
 # ========================== Begin Class ================================
 class SmartTerminal:
@@ -38,17 +40,21 @@ class SmartTerminal:
         try to get all variables declared here or restart
         """
         # ------------------- basic setup --------------------------------
-        print( "" )
-        print( "=============== starting SmartTerminal ===============" )
-        print( "" )
-        print( "     -----> prints may be sent to log file !" )
-        print( "" )
-
         AppGlobal.controller        = self
+        msg    = ""
+        msg   = ( f"{msg}\n=============== starting SmartTerminal ===============" )
+        msg   = ( f"{msg}\n" )
+        msg   = ( f"{msg}\n     -----> prints may be sent to log file !" )
+        msg   = ( f"{msg}\n" )
+        AppGlobal.logger.log( 55, msg )
+
+        # AppGlobal.logger.info(  "no logger" )
+        # AppGlobal.logger.debug( "no logger 2" )
+
         self.app_name               = "SmartTerminal"
-        self.version                = "Ver5: 2019 09 08.1"
-        self.gui                    =  None
-        self.no_restarts            =  -1
+        self.version                = "Ver6: 2020 02 22.0"
+        self.gui                    =  None  # build later
+        self.no_restarts            =  -1    # start is restart 0
         self.no_helper_restarts     = 0
 
         # ----------- for second thread -------
@@ -71,19 +77,22 @@ class SmartTerminal:
         self.no_restarts    += 1
         if self.gui is not None:
 
-            self.logger.critical( self.app_name + ": restart" )  # is defined, this is a restart
+            self.logger.critical( self.app_name + ": restart" )  # is defined, this is a restart -- may log to somewhere else
 
             self.post_to_queue( "stop", None  , (  ) )
             self.helper_thread.join()
 
             self.close_driver()
-
             self.gui.close()
-            try:
-                importlib.reload( parameters )    # should work on python 3 but sometimes does not
-            except Exception as ex_arg:
-                reload( parameters )              # this is python 2 but seems to work sometimes
 
+            importlib.reload( parameters )    # should work on python 3 but sometimes does not
+
+        self.comm_log_file        = None
+
+        # seems to be in gui
+        # if self.parameters.comm_logging_fn is not None:
+        #     # !! may need work to make sure in right directory
+        #     self.comm_log_file    =   open( self.parameters.comm_logging_fn, "a" )
         self.is_first_gui_loop    = True
         self.ext_processing       = None          # built later from parameters if specified
         self.logger               = None          # set later none value protects against call against nothing
@@ -100,8 +109,25 @@ class SmartTerminal:
             self.parmeters_xx   =  self.create_class_from_strings( self.parmeters_x, "ParmetersXx" )
             self.parmeters_xx.modify( self.parameters )
 
+        # !! move to parameters ?? see clipboard
+        if  self.parameters.set_default_path_here:    # Now change the directory to location of this file
+
+            py_path    = self.parameters.running_on.py_path
+
+            # retval = os.getcwd()
+            # print( f"Directory now            {retval}")
+
+            print( f"Directory now ( sw if not ''  {os.getcwd()} change to >>{py_path}<<")
+            if py_path != "":
+                os.chdir( py_path )
+
+            # retval = os.getcwd()
+            # print( f"Directory now changed? to {retval}")
+
         self.logger_id      = self.parameters.logger_id       # std name
         self.logger         = self.config_logger()            # std name
+
+        # needed to delap until parametes init, !! add web browser later
 
 #        if self.parameters.print_to_log:
 #            print               = self.logger.info    # redirect print to the logger
@@ -218,6 +244,9 @@ class SmartTerminal:
 
      # --------------------------------------------------------
     def sudo_restart ( self, ):
+        """
+        not something I could get to work .. and why?
+        """
         pass
         "sudo reboot"
 
@@ -225,9 +254,10 @@ class SmartTerminal:
     def config_logger( self, ):
         """
         configure the logger in usual way using the current parameters
-
+        ?? move to app global or in that direction
         args: zip
-        ret:  the logger and sde effects
+        ret:  the logger and side effects
+              including adding logger to AppGlobal
         """
         logger = logging.getLogger( self.logger_id  )
 
@@ -237,11 +267,13 @@ class SmartTerminal:
         # create the logging file handler.....
         fh = logging.FileHandler(   self.parameters.pylogging_fn )
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        fh.setFormatter(formatter)
-        logger.addHandler(fh)
+        fh.setFormatter( formatter )
+        logger.addHandler( fh )
 
-        logger.info("Done config_logger") #  .debug   .info    .warn    .error
-        AppGlobal.logger    = logger
+        msg   = "Done config_logger"
+        print( msg )
+        logger.info( msg ) #  .debug   .info    .warn    .error
+        AppGlobal.set_logger( logger )
 
         return logger
 
@@ -249,44 +281,61 @@ class SmartTerminal:
     def prog_info( self ):
         """
         log info about program and its argument/environment to the logger
-        of course wait until after logger is set up
+        of course wait until after logger is set up -- now can use pre logger
         args: zip
         ret:  zip
         """
         fll         = AppGlobal.force_log_level
         logger      = self.logger
-        logger.log( fll, "" )
 
+        a_str = ""
         if ( self.no_restarts == 0 ) :
-            logger.log( fll,  "" )   # not really critical but want to show up would a number be better ?
-            logger.log( fll,  "" )
-            logger.log( fll, "============================" )
-            logger.log( fll,  "" )
 
-            logger.log( fll, "Running " + self.app_name + " version = " + self.version  + " mode = " + self.parameters.mode )
-            logger.log( fll,  "" )
+            a_str = f"{a_str}\n"
+            a_str = f"{a_str}\n"
+            a_str = f"{a_str}\n============================"
+            a_str = f"{a_str}\n"
+
+            a_str = f"{a_str}\nRunning {self.app_name} version = {self.version} mode = {self.parameters.mode}"
+            a_str = f"{a_str}\n"
+            #logger.log( fll,  a_str )
+
+            # ================================
+            # logger.log( fll,  "" )   # not really critical but want to show up would a number be better ?
+            # logger.log( fll,  "" )
+            # logger.log( fll, "============================" )
+            # logger.log( fll,  "" )
+
+            # logger.log( fll, "Running " + self.app_name + " version = " + self.version  + " mode = " + self.parameters.mode )
+            # logger.log( fll,  "" )
 
         else:
-            logger.log( fll,  "======" )
-            logger.log( fll, "Restarting " + self.app_name + " version = " + self.version + " mode = " + self.parameters.mode )
-            logger.log( fll,  "======" )
+            #a_str = ""
+            a_str = f"{a_str}\n======"
+            a_str = f"{a_str}\nRestarting {self.app_name} version = {self.version} mode = {self.parameters.mode}"
+            a_str = f"{a_str}\n======"
 
         if len( sys.argv ) == 0:
-            logger.log( fll, "no command line arg " )
+            a_str = f"{a_str}\nno command line arg "
         else:
-            ix_arg = 0
-            for aArg in  sys.argv:
+            for ix_arg, i_arg in enumerate( sys.argv ):
+                a_str = f"{a_str}\ncommand line arg { ix_arg } =  {sys.argv[ix_arg]}"
 
-                logger.log( fll, "command line arg " + str( ix_arg ) + " = " + sys.argv[ix_arg])
-                ix_arg += 1
+        a_str = f"{a_str}\ncurrent directory {os.getcwd()}"
+        # a_str = f"{a_str}\nCOMPUTERNAME {os.getenv( 'COMPUTERNAME' )}"   # may not exist in now in running on
+        logger.log( fll,  a_str )
 
-        logger.log( fll,  "current directory " +  os.getcwd() )
-        logger.log( fll,  "COMPUTERNAME "      +  str( os.getenv( "COMPUTERNAME" ) ) )  # may not exist in linux
+        logger.log( fll, f"{self.parameters}" )
+
+        a_str    = self.parameters.running_on.get_str()
+        logger.log( fll, a_str )
+        # next may not be best way or place
+        # self.parameters.running_on.log_me( logger, logger_level = AppGlobal.force_log_level,  print_flag = True )
 
         start_ts     = time.time()
         dt_obj       = datetime.datetime.utcfromtimestamp( start_ts )
         string_rep   = dt_obj.strftime('%Y-%m-%d %H:%M:%S')
-        logger.log( fll, "Time now: " + string_rep )
+        logger.log( fll, f"Time now: {string_rep}" )  # but logging includes this in some format
 
         return
 
@@ -311,15 +360,14 @@ class SmartTerminal:
             # so far only one is captured
             if parm_name == "parameters":
                 self.parmeters_x  =  parm_value   #
-                print( "command line arg >> " + iarg  )  # log file not open
-
+                msg  = "command line arg >>{iarg}"     # log file not open but use alt
+                AppGlobal.logger.info( msg )
             else:
-                print( "no parmeter extensions" )
-
+                msg  = "no parmeter extensions"
+                AppGlobal.logger.info( msg )
         return
 
     # -------------------------------------------------------
-
     def create_class_from_strings( self, module_name, class_name):
         """
         this will load a class from string names
@@ -329,11 +377,11 @@ class SmartTerminal:
         ret:   instance of the class
         """
         if not( self.logger is None ):
-            self.logger.debug(  "create class "  +  module_name +  " " +  class_name )
+            self.logger.debug(  "create class {module_name} {class_name}" )
 
 #        print( "create class "  + module_name + " " + class_name )
 
-        a_class    = getattr(importlib.import_module(module_name), class_name)
+        a_class    = getattr( importlib.import_module(module_name), class_name )
         instance   = a_class(  )
         return instance
 
@@ -383,10 +431,10 @@ class SmartTerminal:
             # if self.start_helper_after < time.time() :
                 self.start_helper  = False
 
-                msg = "We have an start_helper_function setting in the parameter file = " + self.parameters.start_helper_function
+                msg = f"We have an start_helper_function setting in the parameter file = {self.parameters.start_helper_function}"
                 print( msg )
                 self.gui.print_info_string( msg )
-                to_eval  = "self.ext_processing." + self.parameters.start_helper_function
+                to_eval  = f"self.ext_processing. {self.parameters.start_helper_function}"
                 a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
                 # a_function()           # run in gt of ext_processing module -- not a good idea
                 # next was to run in the background thread
@@ -468,6 +516,7 @@ class SmartTerminal:
         """
         here or in gui
         #self.gui.lbl_db_status  = "DB: not connected"
+        !! us f""
         """
         if self.parameters.kivy:
             return
@@ -530,11 +579,15 @@ class SmartTerminal:
             status = "Open"
             self.gui.print_info_string( "Comm port open OK...." )
             self.logger.info( "open_driver, opened ok" )
+            msg  = "Open Comm Port OK"
+            self.gui.print_info_string( msg )
 
         else:
             self.gui.print_info_string( "Comm port open NG" )
             status = "Open Failed"
             self.logger.info( "open failed, ignored" )
+            msg  = "Open Comm Port NG"
+            self.gui.print_info_string( msg )
 
         self.gui.set_open( status )
 
@@ -547,7 +600,8 @@ class SmartTerminal:
         """
         self.com_driver.close()
         self.gui.set_open( "Closed" )
-
+        msg  = "Closed Comm Port"
+        self.gui.print_info_string( msg )
         return
 
     # -------------------------------------------------------
@@ -559,7 +613,9 @@ class SmartTerminal:
         """
         if self.parameters.echoSend:
             self.gui.print_send_string( adata )
-
+        # see gui for next
+        # if self.comm_log_file is not None:
+        #     self.comm_log_file.write( adata )
         self.com_driver.send( adata )
         return
 
@@ -582,6 +638,10 @@ class SmartTerminal:
 #            pass
 #        else:
 #            #self.gui.print_rec_string( data )  # this post could be a problem, lets put back in helper ??
+
+        # this seems to be in gui, which may be right
+        # if ( self.comm_log_file is not None ) and ( data not == "" ):
+        #     self.comm_log_file.write( data )
         return data
 
     # --------------------------------------------------
@@ -592,7 +652,7 @@ class SmartTerminal:
         loop_flag          = True
         ix_queue_max       = 10
         ix_queue           = 0
-        self.logger.debug(  "smart_terminal.post_to_queue() action {action} function {function}   args {args}"  )
+        self.logger.debug(  f"smart_terminal.post_to_queue() action {action} function {function} args {args}"  )
         while loop_flag:
             loop_flag      = False
             ix_queue  += 1
@@ -620,6 +680,7 @@ class SmartTerminal:
     # --------------------------------------------------
     def rec_from_queue( self, ):
         """
+        recieve item from the queue ( from helper )
         take an item off the queue, think here for expansion may not be currently used.
         ( action, function, function_args ) = self.rec_from_queue()
         """
@@ -675,11 +736,19 @@ class SmartTerminal:
         used as/by callback from gui button.  Can be called form gt
         ?? do we want to sync the db both are using this would be nice
         could we integrate back into main app
+        this is a seperate app, should be able to make this work if I want to
         """
         pass
 #        print( "os_open_graph() not sure want to support this" )
 #        from subprocess import Popen, PIPE  # since infrequently used ??
 #        proc = Popen( [ "python", self.parameters.grapher ] )
+
+    # ----------------------------------------------
+    def os_open_comm_log( self,  ):
+        """
+        used as/by callback from gui button.  Can be called form gt  !! check out AppGlobal and update
+        """
+        AppGlobal.os_open_txt_file( self.parameters.comm_logging_fn  )
 
     # ----------------------------------------------
     def os_open_logfile( self,  ):
@@ -701,8 +770,8 @@ class SmartTerminal:
         """
         used as callback from gui button
         """
-        a_filename = self.starting_dir  + os.path.sep + "parameters.py"
-        AppGlobal.os_open_txt_file( a_filename  )
+        #a_filename = self.starting_dir  + os.path.sep + "parameters.py"
+        AppGlobal.os_open_txt_file( "parameters.py"  )
 
     # ----------------------------------------------
     def os_open_parmxfile( self,  ):
@@ -715,8 +784,6 @@ class SmartTerminal:
 
 
     #=============------------------ callbacks for buttons cb_ -----------------
-
-
     def cb_help( self,  ):
         """
         call back for gui button -- this is for the test button, which
@@ -791,6 +858,9 @@ class SmartTerminal:
             if ix_line == 10:
                 ix_line = 0
                 self.gui.print_info_string( "\n" )
+            #logger.log( fll,  a_str )
+
+        return
 
 # ----------------------------------------------
 # ================= Class =======================

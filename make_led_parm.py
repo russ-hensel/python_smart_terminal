@@ -2,13 +2,13 @@
 
 """
 
-this help compute
+this help compute values fpr
 
 
        self.led_chime
 
 
-
+related to but not part of (for smart_terminal.py )
 
 """
 

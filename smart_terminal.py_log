@@ -1,13 +1,1737 @@
-2017-11-19 13:57:30,729 - smart_terminal - INFO - Done config_logger
-2017-11-19 13:57:30,729 - smart_terminal - INFO - 
-2017-11-19 13:57:30,730 - smart_terminal - INFO - 
-2017-11-19 13:57:30,730 - smart_terminal - INFO - ============================
-2017-11-19 13:57:30,730 - smart_terminal - INFO - 
-2017-11-19 13:57:30,731 - smart_terminal - INFO - Running SmartTerminal version = Python3 Ver 2 2017 11 18.01 mode = ddclock_mode
-2017-11-19 13:57:30,731 - smart_terminal - INFO - 
-2017-11-19 13:57:30,731 - smart_terminal - INFO - command line arg 0 = smart_terminal.py
-2017-11-19 13:57:30,732 - smart_terminal - INFO - current directory D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver2
-2017-11-19 13:57:30,732 - smart_terminal - INFO - COMPUTERNAME SMITHERS
-2017-11-19 13:57:30,733 - smart_terminal - INFO - Time now: 2017-11-19 18:57:30
-2017-11-19 13:57:30,902 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
-2017-11-19 14:32:03,339 - smart_terminal - INFO - SmartTerminal: all done
+ 2020-02-22 11:01:18,006 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 11:01:18,087 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 11:01:18,087 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 11:01:18,087 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 11:02:04,429 - smart_terminal - INFO - Done config_logger
+2020-02-22 11:02:04,430 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 11:02:04,430 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 21.0 mode = deer me
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 11:02:04,430 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    deer me
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./my_dear_icon_2.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_dm
+   ext_processing_class     DMProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       -5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM5
+   baudrate                 38400
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more 
+
+
+2020-02-22 11:02:04,430 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >147.156992<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 11:02:04,430 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 11:02:04,430 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 11:02:04,431 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 11:02:04,431 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 11:02:04,431 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 11:02:04,431 - smart_terminal - DEBUG - new TickTimer strobe_1/ambulance
+2020-02-22 11:02:04,513 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 11:03:12,894 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 11:03:12,932 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 11:03:12,932 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 11:03:12,932 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 11:08:32,896 - smart_terminal - INFO - Done config_logger
+2020-02-22 11:08:32,896 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 11:08:32,896 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 21.0 mode = deer me
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 11:08:32,896 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    deer me
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./my_dear_icon_2.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_dm
+   ext_processing_class     DMProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       -5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM5
+   baudrate                 38400
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 11:08:32,896 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >125.882368<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 11:08:32,896 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 11:08:32,897 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 11:08:32,900 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 11:08:32,900 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 11:08:32,914 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 11:08:32,914 - smart_terminal - DEBUG - new TickTimer strobe_1/bomb
+2020-02-22 11:08:33,010 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 11:16:50,350 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 11:16:50,384 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 11:16:50,384 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 11:16:50,385 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 11:17:19,545 - smart_terminal - INFO - Done config_logger
+2020-02-22 11:17:19,545 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 11:17:19,545 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 21.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 11:17:19,546 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           20
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 11:17:19,546 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >139.558912<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 11:17:19,546 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 11:17:19,547 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 11:17:24,651 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 11:17:24,652 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 11:17:26,865 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 11:40:41,321 - smart_terminal - INFO - Done config_logger
+2020-02-22 11:40:41,321 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 11:40:41,321 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\gui.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 11:40:41,321 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           20
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 11:40:41,321 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >129.032192<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\gui.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 11:40:41,322 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 11:40:41,325 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 11:40:46,431 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 11:40:46,431 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 11:40:49,864 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:04:27,905 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:04:27,905 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:04:27,906 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:04:27,906 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           20
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:04:27,906 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >139.497472<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:04:27,906 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:04:27,907 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:04:32,994 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:04:32,994 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:04:42,772 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:05:08,256 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:05:08,256 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:05:08,256 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:05:08,256 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:05:08,257 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >143.233024<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:05:08,257 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:05:08,257 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:05:08,258 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:05:08,258 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:05:08,259 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:05:08,338 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:05:13,377 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:05:13,377 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:05:27,601 - smart_terminal - DEBUG - os_call exception trying to use >joe< with cmd_arg >smart_terminal.py_log< exception: [WinError 2] The system cannot find the file specified
+2020-02-22 13:05:52,965 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:05:53,023 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:05:53,023 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:05:53,023 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:08:33,019 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:08:33,019 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:08:33,019 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:08:33,020 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_loging_fn           None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:08:33,020 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >145.907712<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:08:33,020 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:08:33,020 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:08:33,021 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:08:33,021 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:08:33,023 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:08:33,095 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:08:35,081 - smart_terminal - DEBUG - os_call exception trying to use >joe< with cmd_arg >smart_terminal.py_log< exception: [WinError 2] The system cannot find the file specified
+2020-02-22 13:08:38,109 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:08:38,110 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:09:17,527 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:09:17,576 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:09:17,576 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:09:17,576 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:10:19,605 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:10:19,605 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:10:19,605 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:10:19,606 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_loging_fn           None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:10:19,606 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >148.721664<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:10:19,606 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:10:19,606 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:10:19,607 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:10:19,607 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:10:19,609 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:10:19,682 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:10:21,769 - smart_terminal - DEBUG - os_call exception trying to use >joe< with cmd_arg >smart_terminal.py_log< exception: [WinError 2] The system cannot find the file specified
+2020-02-22 13:10:24,706 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:10:24,706 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:10:38,334 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:10:38,396 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:10:38,396 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:10:38,396 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:13:13,130 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:13:13,130 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:13:13,130 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:13:13,130 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn           None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:13:13,130 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >150.847488<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:13:13,131 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:13:13,131 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:13:13,132 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:13:13,132 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:13:13,133 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:13:40,769 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:13:40,769 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:13:40,769 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\gui.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:13:40,769 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn           None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:13:40,769 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >151.076864<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\gui.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:13:40,769 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:13:40,769 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:13:40,770 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:13:40,770 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:13:40,772 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:13:40,840 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:13:42,834 - smart_terminal - DEBUG - os_call exception trying to use >joe< with cmd_arg >smart_terminal.py_log< exception: [WinError 2] The system cannot find the file specified
+2020-02-22 13:13:45,879 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:13:45,880 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:20:09,508 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:20:09,516 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:20:09,516 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:20:09,516 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:20:17,718 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:20:17,719 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:20:17,719 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:20:17,719 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:20:17,719 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >154.550272<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >d:\russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:20:17,720 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:20:17,720 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:20:17,721 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:20:17,721 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:20:17,723 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:20:17,800 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:20:22,821 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:20:22,822 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:20:23,839 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:20:23,843 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:20:23,843 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:20:23,843 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:22:49,808 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:22:49,808 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:22:49,808 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:22:49,808 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:22:49,808 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >157.134848<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >d:\russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:22:49,809 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:22:49,809 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:22:49,811 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:22:49,812 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:22:49,814 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:22:49,892 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:22:54,914 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:22:54,915 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:22:56,138 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:22:56,235 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:22:56,235 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:22:56,235 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:24:27,768 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:24:27,769 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:24:27,769 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:24:27,769 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:24:27,769 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >159.895552<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >d:\russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >d:\russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:24:27,770 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:24:27,770 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:24:27,772 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:24:27,772 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:24:27,774 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:24:27,854 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:24:32,884 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:24:32,884 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:24:42,983 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:24:43,051 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:24:43,051 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:24:43,051 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:27:19,916 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:27:19,916 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:27:19,917 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:27:19,917 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          test_comlog.log
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:27:19,917 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >164.540416<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:27:19,917 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:27:19,917 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:27:19,918 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:27:19,918 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:27:19,920 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:27:19,998 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:27:25,016 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:27:25,016 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:32:53,017 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:32:53,058 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:32:53,058 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:32:53,058 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 13:32:55,070 - smart_terminal - INFO - Done config_logger
+2020-02-22 13:32:55,070 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 13:32:55,070 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 13:32:55,070 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               ['joe', 'notepad']
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          test_comlog.log
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 13:32:55,070 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.4.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >166.723584<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 13:32:55,070 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 13:32:55,070 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:32:55,071 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 13:32:55,071 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 13:32:55,073 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 13:32:55,147 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 13:32:57,004 - smart_terminal - DEBUG - os_call exception trying to use >joe< with cmd_arg >test_comlog.log< exception: [WinError 2] The system cannot find the file specified
+2020-02-22 13:33:00,175 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 13:33:00,176 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 13:33:08,287 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 13:33:08,326 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 13:33:08,326 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 13:33:08,326 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 17:39:21,815 - smart_terminal - INFO - Done config_logger
+2020-02-22 17:39:21,815 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 17:39:21,815 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 17:39:21,815 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 17:39:21,815 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >167.911424<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 17:39:21,816 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 17:39:21,816 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:39:21,817 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 17:39:21,817 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:39:21,818 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 17:39:21,923 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 17:39:26,945 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 17:39:26,945 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 17:40:38,435 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 17:40:38,438 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 17:40:38,438 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 17:40:38,438 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 17:40:43,040 - smart_terminal - INFO - Done config_logger
+2020-02-22 17:40:43,040 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 17:40:43,040 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 17:40:43,040 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 17:40:43,040 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >125.431808<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 17:40:43,040 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 17:40:43,040 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:40:43,044 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 17:40:43,044 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:40:43,054 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 17:40:43,156 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 17:40:48,193 - smart_terminal - ERROR - polling Exception in smart_terminal: invalid syntax (<string>, line 1)
+2020-02-22 17:40:48,193 - smart_terminal - ERROR -   File "D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py", line 439, in polling
+    a_function   = eval( to_eval )    # or hava a way to pass eval to other side ??
+
+2020-02-22 17:41:08,522 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action call function <bound method HelperThread.find_arduino of <HelperThread(Thread-8, started 32436)>> args ()
+2020-02-22 17:41:08,591 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  call <bound method HelperThread.find_arduino of <HelperThread(Thread-8, started 32436)>> ()
+2020-02-22 17:41:08,591 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() call + <bound method HelperThread.find_arduino of <HelperThread(Thread-8, started 32436)>> ()
+2020-02-22 17:41:08,591 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() making queued function call
+2020-02-22 17:41:08,591 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 17:41:10,603 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() returned from queued function call 
+2020-02-22 17:44:36,348 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 17:44:36,403 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 17:44:36,403 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 17:44:36,403 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 17:44:40,078 - smart_terminal - INFO - Done config_logger
+2020-02-22 17:44:40,078 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 17:44:40,078 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david + tests
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 17:44:40,078 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david + tests
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           10
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 17:44:40,078 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >138.30144<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 17:44:40,078 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 17:44:40,079 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:44:40,080 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 17:44:40,080 - smart_terminal - DEBUG - create class {module_name} {class_name}
+2020-02-22 17:44:40,082 - smart_terminal.DDCProcessing - DEBUG - in class DDCProcessing init
+2020-02-22 17:44:40,151 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling()  entered 
+2020-02-22 17:44:45,167 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action call function <bound method DDCProcessing.auto_run of <ext_process_ddc.DDCProcessing object at 0x000001B0F828B408>> args ()
+2020-02-22 17:44:45,182 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  call <bound method DDCProcessing.auto_run of <ext_process_ddc.DDCProcessing object at 0x000001B0F828B408>> ()
+2020-02-22 17:44:45,182 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() call + <bound method DDCProcessing.auto_run of <ext_process_ddc.DDCProcessing object at 0x000001B0F828B408>> ()
+2020-02-22 17:44:45,182 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() making queued function call
+2020-02-22 17:44:50,212 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 17:44:55,531 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() returned from queued function call 
+2020-02-22 20:23:44,648 - smart_terminal - DEBUG - smart_terminal.post_to_queue() action stop function None args ()
+2020-02-22 20:23:44,726 - smart_terminal.helper - DEBUG - in helper, rec_from_queue  stop None ()
+2020-02-22 20:23:44,726 - smart_terminal.helper - DEBUG - smart_terminal_helper.polling() stop + None ()
+2020-02-22 20:23:44,726 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 20:25:04,220 - smart_terminal - INFO - Done config_logger
+2020-02-22 20:25:04,221 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 20:25:04,221 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 20:25:04,221 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           20
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 20:25:04,221 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >114.46272<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 20:25:04,221 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 20:25:04,222 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 20:25:14,357 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 20:25:25,509 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 21:00:57,730 - smart_terminal - INFO - Done config_logger
+2020-02-22 21:00:57,730 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 21:00:57,730 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver5: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 21:00:57,730 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                    ddclock_david
+   ex_editor               C:\apps\Notepad++\notepad++.exe
+   logger_id               smart_terminal
+   logging_level           20
+   --- appearance ---
+   win_geometry             1300x600+20+20
+   icon                     ./clock_white.ico
+   default_scroll           1
+   --- misc ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   get_cpu_temp             False
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal ---
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   and so much more.... 
+
+
+2020-02-22 21:00:57,731 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    nhost_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >118.976512<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 21:00:57,731 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 21:00:57,732 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 21:01:07,870 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 21:01:26,578 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 22:36:08,520 - smart_terminal - INFO - Done config_logger
+2020-02-22 22:36:08,520 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 22:36:08,520 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver6: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 22:36:08,520 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                     ddclock_david
+   ex_editor                C:\apps\Notepad++\notepad++.exe
+   logger_id                smart_terminal
+   logging_level            20
+   --- appearance ---
+   icon                     ./clock_white.ico
+   win_geometry             1300x600+20+20
+   win_max                  False
+   default_scroll           1
+   send_ctrls               [('Version of arduino', 'v', False), ('Help', '?', False), ('What Where', 'w', False), ('Send', '', True), ('danceMin', 'd0 50 500 10', True), ('danceMin', 'd0 1000 500 20', True), ('chimeMin', 'c2 0 5', True), ('danceHr', 'd1 50 500 100', True), ('chimeHr', 'c1 0 3', True), ('Send', '', True), ('Send', '', True)]
+   gui_sends                11
+   max_send_rows            2
+   show_helper_frame        False
+   id_color                 red
+   id_height                0
+   bk_color                 gray
+   bot_spacer_height        0
+   button_height            3
+   button_width             15
+   send_bg                  white
+   --- logging  ---
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal comm ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   --- data ---
+   get_cpu_temp             False
+   and so much more.... 
+
+
+2020-02-22 22:36:08,520 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    host_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >50.696192<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\parameters.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 22:36:08,521 - smart_terminal - Notice - Time now: {string_rep}
+2020-02-22 22:36:08,522 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 22:36:18,671 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 22:36:52,284 - smart_terminal - Notice - SmartTerminal: all done
+2020-02-22 22:37:51,514 - smart_terminal - INFO - Done config_logger
+2020-02-22 22:37:51,514 - smart_terminal - Level 55 - 
+=============== starting SmartTerminal ===============
+
+     -----> prints may be sent to log file !
+
+2020-02-22 22:37:51,514 - smart_terminal - Notice - 
+
+
+============================
+
+Running SmartTerminal version = Ver6: 2020 02 22.0 mode = ddclock_david
+
+command line arg 0 =  D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py
+current directory D:\Russ\0000\python00\python3\_projects\smart_terminal
+2020-02-22 22:37:51,515 - smart_terminal - Notice - 
+>>>>>>>>>>* parameters (some) *<<<<<<<<<<<<
+   mode                     ddclock_david
+   ex_editor                C:\apps\Notepad++\notepad++.exe
+   logger_id                smart_terminal
+   logging_level            20
+   --- appearance ---
+   icon                     ./clock_white.ico
+   win_geometry             1300x600+20+20
+   win_max                  False
+   default_scroll           1
+   send_ctrls               [('Version of arduino', 'v', False), ('Help', '?', False), ('What Where', 'w', False), ('Send', '', True), ('danceMin', 'd0 50 500 10', True), ('danceMin', 'd0 1000 500 20', True), ('chimeMin', 'c2 0 5', True), ('danceHr', 'd1 50 500 100', True), ('chimeHr', 'c1 0 3', True), ('Send', '', True), ('Send', '', True)]
+   gui_sends                11
+   max_send_rows            2
+   show_helper_frame        False
+   id_color                 red
+   id_height                0
+   bk_color                 gray
+   bot_spacer_height        0
+   button_height            3
+   button_width             15
+   send_bg                  white
+   --- logging  ---
+   comm_logging_fn          None
+   pylogging_fn             smart_terminal.py_log
+   start_helper_function    auto_run
+   start_helper_delay       5
+   --- terminal comm ---
+   ext_processing_module    ext_process_ddc
+   ext_processing_class     DDCProcessing
+   prefix_send              # >>> 
+   prefix_rec               # <<< 
+   prefix_info              # !!! 
+   comm_class               RS232Driver
+   comm_mod                 rs232driver2
+   port                     COM4
+   baudrate                 19200
+   bytesize                 8
+   parity                   N
+   stopbits                 1
+   recTimeout               0.05
+   port_list                ['COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10']
+   --- data ---
+   get_cpu_temp             False
+   and so much more.... 
+
+
+2020-02-22 22:37:51,515 - smart_terminal - Notice - 
+>>>>>>>>>>* running_on() log_me() *<<<<<<<<<<<<
+    host_name          >theprof<
+    host_tcpip         >10.25.11.6<
+    computername       >theprof<
+    computer_id        >theprof<
+    platform_machine   >AMD64<
+    platform_system    >Windows<
+    memory_mega        >125.272064<
+    os_is_win          >True<
+    sys_version        >3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)]<
+    sys_version_info   >sys.version_info(major=3, minor=7, micro=6, releaselevel='final', serial=0)<
+    python_version     >3.7.6<
+    environments       >{'what': 'not collected'}<
+    program_py_fn      >D:\Russ\0000\python00\python3\_projects\smart_terminal\smart_terminal.py<
+    py_path            >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+    org_path           >D:\Russ\0000\python00\python3\_projects\smart_terminal<
+---------------- end running on --------------
+2020-02-22 22:37:51,515 - smart_terminal - Notice - Time now: 2020-02-23 03:37:51
+2020-02-22 22:37:51,519 - smart_terminal.helper - INFO - smart_terminal_helpe.HelperThread set controller
+2020-02-22 22:38:01,691 - smart_terminal.helper - INFO - smart_terminal_helper.test_ports()
+2020-02-22 22:38:43,236 - smart_terminal - Notice - SmartTerminal: all done

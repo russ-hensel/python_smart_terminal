@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+
+
+"""
+for smart_terminal.py this is an abstract base for ext_process_xxxx.py modules
+
+"""
+
+
+
 import abc
 
 # ================= Class =======================
@@ -23,7 +32,7 @@ class ABCProcessing( object ):
         make a frame for placement, or if no additional component return None
         """
         pass
-    
+
         # ----------------------------------------
     @abc.abstractmethod
     def polling_ext( self, ):

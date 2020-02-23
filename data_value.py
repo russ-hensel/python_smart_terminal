@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
+
+
+"""
+support for smart_terminal.py helps determine which data points are saved to the database
+"""
 
 #import serial
 import sys
@@ -114,7 +118,7 @@ def double( value  ):
 
 if __name__ == '__main__':
         """
-        test
+        little test
         """
 
         test = DataValue( 5, .5 )

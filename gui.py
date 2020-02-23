@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# gui    for SmartTerminal  - this is a cleaned up ( somewhat ) new version
+# gui    for SmartTerminal ( smart_terminal.py )  -
 #
 # this does not forward actions that do not effect the model to the controller
 # otherwise it does
@@ -27,7 +27,7 @@ import  ctypes
 # ------ local
 from    app_global import AppGlobal
 
-
+# ======================= begin class ====================
 class RedirectText(object):
     """
     simple class to let us redirect console prints to our recieve area
@@ -60,7 +60,6 @@ class RedirectText(object):
         pass
 
 # ======================= begin class ====================
-
 class GUI( object ):
     """
     gui for the application
@@ -76,19 +75,20 @@ class GUI( object ):
         self.root               = Tk()    # this is the tkinter root for the GUI move to gui after new working well plus bunch after here
 
 #        print( "next set icon " + str( self.parameters.os_win ) )
-        if self.parameters.os_win:
+        if self.parameters.running_on.os_is_win:
             # from qt - How to set application's taskbar icon in Windows 7 - Stack Overflow
             # https://stackoverflow.com/questions/1551605/how-to-set-applications-taskbar-icon-in-windows-7/1552105#1552105
 
             icon = self.parameters.icon
             if not( icon is None ):
-                print( "set icon "  + str( icon ))
+                # print( "set icon "  + str( icon ))
                 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(icon)
                 self.root.iconbitmap( icon )
             else:
-                print( "no icon "  + str( icon ))
+                # print( "no icon "  + str( icon ))
+                pass
 
-        a_title   = self.controller.app_name + " version: " + self.controller.version + " mode: " + self.parameters.mode
+        a_title   = f"{self.controller.app_name} version: {self.controller.version}  mode: {self.parameters.mode}"
         if self.controller.parmeters_x    != "none":
             # add notice of second parameter file in title
             a_title  += " parameters=" +   self.controller.parmeters_x
@@ -108,7 +108,7 @@ class GUI( object ):
 
             # self.root.wm_state('zoomed')  no error on windows but is it a help
             # self.root.attributes('-zoomed', True)  # error in windows
-            if  self.parameters.os_win:
+            if  self.parameters.running_on.os_is_win:
                 self.root.state('zoomed')   # maybe just windows where it does seem to work
             else: # as close as I can get so far for linux
                 #w = self.root.winfo_screenwidth()
@@ -377,6 +377,11 @@ class GUI( object ):
         if self.controller.parmeters_x  != "none":
             a_button = Button( a_frame , width=10, height=2, text = "Edit ParmsX" )
             a_button.config( command = self.controller.os_open_parmxfile )
+            a_button.pack( side = LEFT )
+
+        if self.parameters.comm_logging_fn  is not None:
+            a_button = Button( a_frame , width=10, height=2, text = "Edit C Log" )
+            a_button.config( command = self.controller.os_open_comm_log )
             a_button.pack( side = LEFT )
 
         buttonClose = Button( a_frame , width=10, height=2, text = "SendParms" )
@@ -652,8 +657,10 @@ class GUI( object ):
         self.gui_running        = True
         self.root.after( self.parameters.gt_delta_t, self.controller.polling )
 
-        if self.parameters.comm_loging_fn is not None:
-            self.comm_log = open( self.parameters.comm_loging_fn, "a" )
+        # when to close or flush is a bit of issue, flush when using edit button ??
+        if self.parameters.comm_logging_fn is not None:
+            # !! may need work to make sure in right directory
+            self.comm_log = open( self.parameters.comm_logging_fn, "a" )
         else:
             self.comm_log = None
 
