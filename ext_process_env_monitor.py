@@ -195,7 +195,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
         infinite loop
         call: run in ht not controller
         ret: only on failure, probably should be exception
-        !! times perhaps should be paramaterized
+        !! times perhaps should be parameterized
         data not found will end loop is this what we want ??
         """
         # typically stat functions with this sort of thing
@@ -285,7 +285,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
             if ix == -1:
                 msg = "failed to find ok got: >>>" + rec_data + "<<<"    # !! or did we time out
                 self.logger.error( msg )
-                print ( msg  )   # !! use log  print in recive area
+                print ( msg  )   # !! use log  print in receive area
                 # need to inform gui and probably throw exception !!
                 self.arduino_rep_fail   += 1
                 if  self.arduino_rep_fail > 3:  # ?? move to parameters.py
@@ -317,7 +317,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
         infinite loop
         call: run in ht not controller
         ret: only on failure, probably should be exception
-        !! times perhaps should be paramaterized
+        !! times perhaps should be parameterized
         data not found will end loop is this what we want ??
         """
 
@@ -383,7 +383,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
         #gui              = self.controller.gui
         #helper_label     = gui.helper_label
 
-        helper_thread.sleep_ht_with_msg_for( 10, "Beginning find and Monitor Arduino... ", 5, True )
+        helper_thread.sleep_ht_with_msg_for( 10, "Beginning find and monitor Arduino... ", 5, True )
 
         ok, a_port = helper_thread.find_arduino( )
 
@@ -409,8 +409,8 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
     def set_time( self,  ):
         """
         std set
-        set the aquisition time of the data
-        when is this ever called or updated ?? !!  perhaps aquire data
+        set the acquisition time of the data
+        when is this ever called or updated ?? !!  perhaps acquire data
         """
         self.time    = time.time()
 
@@ -486,7 +486,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
     # ------------------------------------------
     def process_light_line( self,  line  ):
         """
-        repeat stuff from temp, humit......
+        repeat stuff from  ......
         """
         #self.logger.debug( "process_light_line " + line )
         pass   # enough for testing temp
@@ -494,7 +494,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
     # ------------------------------------------
     def process_door_line( self,  line  ):
         """
-        repeat stuff from temp, humit......
+        repeat stuff from  ......
         """
         #self.logger.debug( "process_door_line " + line )
         pass   # enough for testing temp
@@ -548,7 +548,8 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
             # should log error                               )
             # you are probabbly screwed unless you fix this  perhaps back to greenhouse
             return
-
+            
+    # ------------------------------------------
     def save_data_for_GreenHouse( self, ):
         """
         Purpose: as in function name
@@ -848,7 +849,7 @@ class ProcessingForEnv( abc_def.ABCProcessing ):
 # =================================
 class ButtonAction( object ):
     """
-    this may become an asbstract class for plug in button actions in the smart terminal, a bit like processing add to the array
+    this may become an abstract class for plug in button actions in the smart terminal, a bit like processing add to the array
     need ref to my processing object probably
     hold info to implement a button in the gui
     looks like a struct so far
@@ -910,4 +911,7 @@ if __name__ == '__main__':
 
 
 # ======================= eof ======================================
+
+
+
 

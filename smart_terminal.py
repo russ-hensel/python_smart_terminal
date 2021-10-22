@@ -96,8 +96,8 @@ class SmartTerminal:
         self.is_first_gui_loop    = True
         self.ext_processing       = None          # built later from parameters if specified
         self.logger               = None          # set later none value protects against call against nothing
+        
         # ----- parameters
-
         self.parmeters_x          = "none"        # name without .py for parameters extension may be replaced by command line args
         self.get_args( )
         # command line might look like this:  # python smart_terminal.py    parameters=gh_paramaters
@@ -127,7 +127,7 @@ class SmartTerminal:
         self.logger_id      = self.parameters.logger_id       # std name
         self.logger         = self.config_logger()            # std name
 
-        # needed to delap until parametes init, !! add web browser later
+        # needed to delay until parametes init, !! add web browser later
 
 #        if self.parameters.print_to_log:
 #            print               = self.logger.info    # redirect print to the logger

@@ -10,10 +10,6 @@ running_on.py master in smart plug moves see the readme for python3 or projects 
 """
 #---------------------
 """
----- template header example -----
-What:   introspection type stuff
-Status: draft, ok draft but possibly useful
-Refs:
 
 Code introspection in Python - GeeksforGeeks
     *>url  https://www.geeksforgeeks.org/code-introspection-in-python/
@@ -181,6 +177,7 @@ class RunningOn( object ):
     @classmethod
     def get_str(cls,    ):
         return cls.__str__( )
+
     # ----------------------------------------------
     @classmethod
     def __str__(cls,    ):

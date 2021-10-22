@@ -210,7 +210,7 @@ class GUI( object ):
         a_frame.grid( row=next_frame, column=0, sticky= E + W + N  )
         next_frame += 1
 
-        # ------------ recieve frame ---------------------
+        # ------------ receive frame ---------------------
         self.cb_scroll_var  = IntVar()  # for check box in reciev frame
 
         a_frame    = self.make_rec_frame( self.root_b, "green" )
@@ -218,7 +218,7 @@ class GUI( object ):
         a_frame.grid( row=next_frame, column=0, sticky= E + W + N + S )
         next_frame += 1
 
-        # ------------ end recieve frame ---------------------
+        # ------------ end receive frame ---------------------
         self.root_b.grid_columnconfigure( 0, weight=1 )
         self.root_b.grid_rowconfigure(    0, weight=0 )
 
@@ -579,7 +579,7 @@ class GUI( object ):
         s_text0.grid( row=0, column=2, sticky = N + S )
 
         s_text0.config( command=text0.yview )
-        text0.config( yscrollcommand=s_text0.set )
+        text0.config( yscrollcommand = s_text0.set )
 
         text0.grid( row=0, column=1, sticky = N + S + E + W  )
 
@@ -625,7 +625,7 @@ class GUI( object ):
     # ------------------------------------------
     def __make_label__( self, a_frame, a_row, a_col, a_text, label_id = None, label_dict = None ):
         """
-        a_id   id for lable in the dict
+        a_id   id for label in the dict
         a_dict will contain the label reference now used for setting text as in show_item
         helper for making and placing labels
         return tuple -- or by ref do not need to , test this in templates
@@ -663,7 +663,6 @@ class GUI( object ):
             self.comm_log = open( self.parameters.comm_logging_fn, "a" )
         else:
             self.comm_log = None
-
 
         self.root.mainloop()
         self.gui_running        = False
@@ -786,7 +785,6 @@ class GUI( object ):
 
         if  self.comm_log is not None:    # logging
             self.comm_log.write( a_string )
-
 
         try:
              numlines = int( self.rec_text.index( 'end - 1 line' ).split('.')[0] )  # !! beware int( None ) how could it happen ?? it did this is new

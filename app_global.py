@@ -236,7 +236,7 @@ class AppGlobal( object ):
     logger                  = None        # msg    = f"{}" AppGlobal.__logger.info( msg )
     logger_id               = None
 
-    logger                  = NoLoggerLogger
+    logger                  = NoLoggerLogger  # reset when logger set up ... see set_logger
 
     helper_thread           = None         # smart terminal helper  HelperThread
     helper_thread_ext       = None         # things like DDCProcessing depending on extension
@@ -246,7 +246,7 @@ class AppGlobal( object ):
     db                      = None       # assigned in db.py ??
     gui                     = None
 
-    clock_mode              = None       # for dd clock, init from parmeters
+    clock_mode              = None       # for dd clock, init from parameters
 
 
     # --- text editor
@@ -255,7 +255,7 @@ class AppGlobal( object ):
     file_text_editor        = OSCall( text_editors,  )
 
     # --- file explorer
-    # file_explorers  not in parmeters as yet
+    # file_explorers  not in parameters as yet
     file_explorers            = [ r"explorer", "nemo", "xfe", "pcmanfm", ]
     file_explorer           = OSCall( file_explorers ) #  add and parameters
 

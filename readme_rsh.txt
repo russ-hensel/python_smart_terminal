@@ -1,6 +1,9 @@
 readme_rsh.txt for the smart_terminal application
 
 
+
+
+
 ======================= short term important temp notes
 
 should times be passed to chime hr..... or use selr.xxxx now using self.
@@ -19,7 +22,7 @@ github: https://github.com/russ-hensel/python_smart_terminal
 
 ==================== DeerMe History/ToDo ==================================
 
-!! check out auto start and detect, should work as in ddc 
+!! check out auto start and detect, should work as in ddc
 !! more messages when ticktime is changed
 
 
@@ -94,6 +97,87 @@ dec 2018
         a slow rise in brightness, dim down after the chime
 
 
+========================= requirements =======
+
+
+import logging
+import serial
+import sys
+import os
+import datetime
+import abc
+
+
+import webbrowser
+from   subprocess import Popen
+from   pathlib import Path
+import os
+import psutil
+from   tkinter import messagebox
+import logging
+import sys
+
+
+import os
+import psutil
+import platform
+import socket;
+from   platform import python_version
+
+import logging
+import abc_def
+import Tkinter as Tk
+import logging
+import datetime
+import abc_def
+import tkinter as Tk
+import random
+import time
+import logging
+import datetime
+import abc_def
+import tkinter as Tk
+import random
+
+import simpleaudio as sa
+
+
+import logging
+import time
+
+import abc_def
+import tkinter as Tk
+import os
+import logging
+import time
+import abc_def
+import Tkinter as Tk
+import logging
+import pyperclip
+from   tkinter import *   # is added everywhere since a gui assume tkinter namespace
+import sys
+import ctypes
+
+
+from collections import deque
+import time
+
+import queue
+import logging
+import sys
+import logging
+import importlib
+import sys
+import os
+import time
+import traceback
+import queue
+import threading
+import datetime
+
+
+
+
 
 
 ============================= deer me ============================
@@ -151,17 +235,44 @@ then in python
 
 
 
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+cannot find snip file D:\Russ\0000\python00\python3\_examples/ex_date.py
+
+                      D:\Russ\0000\python00\python3\_examples\ex_deque.py
+
+parameters.snip_files
+
+parameters.snip_files
+
+      self.pylogging_fn       = "clipboard.py_log"   # file name for the python logging
+        self.logging_level      = logging.DEBUG
+
+     self.scratch_bat       =  r"scratch.bat"   # rel filename
+        self.scratch_py        =  r"scratch.py"    # rel filename
+
+        # ================== snippest ============================
+        self.snippets_sort      = True                # sort snippes on key, else in file order
+        self.snippets_fn        = "./snipsand/snippetts_1.txt"
+
+        self.snip_file_sort     = True                # sort make them easier to find in the GUI
 
 
+#        self.snip_file_fn       = "snips_file_auto.txt"
+        # need to associate with extension -- say a dict
 
-
-
-
-
-
-
-
-
+        self.snip_file_command  = r"c:\apps\Notepad++\notepad++.exe"  #russwin10  opens snip files, nice if can run it
 
 
 

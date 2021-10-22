@@ -4,7 +4,7 @@
 """
 parameters.py for SmartTerminal
 this is the configuration file for the smart terminal  smart_terminal.py
-it is run once on system startup
+one instance is created on system startup
 
 
 """
@@ -32,6 +32,7 @@ class Parameters( object ):
         """
         choose your mode, typically only one line is uncommented, or just pass to stay in default mode
         note addition at end for some testing, keep for that purpose
+        use editor find or outline to go to the method
         """
         # ===========  add your  modes as desired starting here ========
         # ---------->> call modes here; I comment out ones I am not using.  Makes it really easy to switch modes
@@ -41,17 +42,21 @@ class Parameters( object ):
 
 
         pass                              # if everything else is commented out
+        #self.quick_start_mode()
         #self.tutorial_example_mode()     # simple setup for documentation and basic terminal
         #self.accel_demo_mode()           #
         #self.controlino_mode()           #
 
         #self.ddclock_mode()
-        self.ddclock_david()
+        #self.ddclock_david()
         #self.ddclock_test_mode()
         #self.ddclock_demo_1()
         #self.ddclock_demo_2()
 
-        #self.deer_me()
+
+
+        self.deer_me_dev()
+        #self.deer_me_pi_deploy()
 
         #self.infra_red_mode()                # not working, requires special modules from irtools
         #self.green_house_mode()
@@ -66,7 +71,7 @@ class Parameters( object ):
 
 
         # ---- additional stuff only for testing in addition to another mode
-        #self.mode_plus_tests()                # used only for testing
+        #self.mode_plus_tests()                # used only for testing change freely
 
     # -------
     def __init__(self,  ):
@@ -88,7 +93,7 @@ class Parameters( object ):
 
         self.sanity_check_parms(  )                # more of an idea than something of value
 
-        # leave this as last -- do not modify
+        # leave this as last -- do not modify, the global app makes some changes
         AppGlobal.parameter_tweaks()               # including restart
         # and we are done
         # for next move to prog info ??
@@ -198,7 +203,7 @@ class Parameters( object ):
     # -------
     def mode_plus_tests( self ):
         """
-        add change some parameters just for testing
+        add change some parameters just for testing -- use after a normal mode method is called.
         """
         self.mode               += " + tests"
         self.logging_level      = logging.DEBUG     #INFO
@@ -209,13 +214,14 @@ class Parameters( object ):
 
         # self.comm_logging_fn    = "test_comlog.log"
 
-
-    # ------->> Subroutines:  one for each mode. alpha order - except tutorial
-    def tutorial_example_mode( self, ):
+    # ------->> Subroutines:  one for each mode. alpha order - except quick_start_mode
+    def quick_start_mode( self, ):
         """
         this mode does not do anything useful except illustrate a simple "mode subroutine"
+        new users should probably start here
+        the settings in it are the ones your are most likely to use/change from the defaults
         """
-        self.mode              = "TutorialExample"  # this name will appear in the title of the window
+        self.mode              = "QuickStart"  # this name will appear in the title of the window
                                                     # to help keep track of which mode you are using
 
         self.baudrate          = 19200              # changes the baudrate from the default to 19200
@@ -671,11 +677,12 @@ class Parameters( object ):
         self.minute_off                 = False
 
     # --------------------------
-    def deer_me( self ):
+    def deer_me_dev( self ):
         """
         to scare away the deer
+        this is for development probably on the professor
         """
-        self.mode                     = "deer me"
+        self.mode                     = "deer_me_dev"
         self.icon                     = r"./my_dear_icon_2.ico"
 
         # deer_me counts on this being .1 sec, or else major changes will be required
@@ -742,6 +749,81 @@ class Parameters( object ):
         self.arduino_connect_delay      = 10     # may not be implemented yet
         self.get_arduino_version        = "v"
         self.arduino_version            = "DeerMe"
+
+    # --------------------------
+    def deer_me_pi_deploy( self ):
+        """
+        to scare away the deer
+        this is for deployment on the raspberry pi deer_me
+        """
+        self.mode                     = "deer_me_pi_deploy"
+        self.icon                     = r"./my_dear_icon_2.ico"
+
+        # deer_me counts on this being .1 sec, or else major changes will be required
+        self.ht_delta_t               = 100/1000.        # thought this was required timing for deer me but seems not so
+
+
+        self.logging_level            = logging.DEBUG            #   CRITICAL  50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
+
+        self.baudrate                 = 38400  # 9600  38400
+        self.port                     = "COM5"             # com port
+
+        self.logging_level            = logging.DEBUG       #   CRITICAL  50   ERROR  40 WARNING  30  INFO    20 DEBUG    10 NOTSET   0
+
+        self.comm_logging_fn           = None    # None for no logging else file name like "smart_terminal_comm.log"
+
+#       -------------------------- auto run on off ---------------------
+        self.start_helper_function    = "auto_run"    # now using eval, may need to do same with args,
+        self.start_helper_args        = ( )    # () empty   ( "x", ) one element
+        self.start_helper_delay       = -5      # in seconds  must be > 0 to start
+
+
+        # ---------------- send area:
+        self.button_height     = 3        # for the send buttons    -- seem to be roughly the no of lines
+        self.button_width      = 15       # for the send buttons    -- 10-20 seems reasonable starts
+        self.send_width        = 15       # for the text to be sent -- 10-20 seems reasonable starts
+        # next at end of control list
+        #self.max_send_rows     = 3         # the send areas are added in columns this many rows long, then a new
+        #self.max_send_rows
+
+        # see backup for some test button sets
+# refresh this list form time to time
+#define TIME_ON       0      // this is a time, delta time, for th light to be on
+#define ACC_ON        1      // some sort of ( depending on method ) acceleration for the TIME_ON
+#define TIME_OFF      2      // analogous to TIME_ON,  but for off
+#define ACC_OFF       3      //
+#define REPEATS       4      // number of time this cycle can repeat, this may not make sense
+#define PIN           5      // pin used by this light
+#define STATE         6      // current state
+#define NEXT_TIME     7      // next time the state changes
+
+        self.send_ctrls = [
+                # text                      cmd       can edit
+                ( "Version of arduino",       "v",                  False ),
+                ( "Help",                     "h",                  False ),
+                ( "Set Light Index",          "i0",                 False ),
+                ( "Set Light Index",          "i1",                 False  ),
+                ( "Load Light I",             "l100 200 130 400",   True  ),
+                ( "Load Light I",             "l105 200 130 400",   True  ),
+                ( "Print Light I",            "p" ,     False  ),
+                ( "Strobe",                   "s1" ,    False  ),
+                ( "Strobe Not",                "s0" ,   False  ),
+                ( "Stop",                     "!xx" ,   False  ),
+                ( "Send", "", True ),
+                ( "Send", "", True ),
+                ]
+
+        self.gui_sends         = len( self.send_ctrls )
+        self.max_send_rows     = 2         # 4 seems good for the pi  the send areas are added in columns this many rows long,
+
+        # ----- processing related:
+        self.ext_processing_module      = "ext_process_dm"
+        self.ext_processing_class       = "DMProcessing"
+
+        self.arduino_connect_delay      = 10     # may not be implemented yet
+        self.get_arduino_version        = "v"
+        self.arduino_version            = "DeerMe"
+
 
     # -------
     def infra_red_mode( self ):
@@ -1101,18 +1183,19 @@ class Parameters( object ):
     def default_terminal_mode(self, ):
         """
         this sets defaults that are needed to make the system run, many have an advanced
-        purpose and will not be documented ( comments here should not be trusted )
-        here, other example parameter files document
+        purpose and may not be documented ( comments here should not be trusted but are a guide )
+        here, other example parameter files may document
         them, unless they are obsolete or unimplemented.  Setting unused parameters
         just wastes small amounts of memory, impact is minimal ).
         Some settings mandatory, some pretty much automatic, and generally this subroutine should not be
         messed with unless you think you understand the implications.  Make your changes in some overriding mode
         """
         self.mode              = "Default Terminal"
-        self.running_on        = RunningOn
+        self.running_on        = RunningOn   # RunningOn gathers information on the enviroment the application is running on
         self.running_on.gather_data()
 
-        self.icon              = r"terminal_1.ico"    #
+        self.icon              = r"terminal_1.ico"    #  icon used by application
+
         #self.icon              = None                 # no icon at all -- that is os default
 
         # --------------- consider new ---------------------
@@ -1129,6 +1212,7 @@ class Parameters( object ):
 
         self.platform       = self.running_on.our_os    # sometimes it matters which os but phase out this name
 
+        # help file for the application
         self.help_file       =  "http://www.opencircuits.com/SmartPlug_Help_File"   # can be url or a local file
 
         help_file  = r"D:\Russ\0000\python00\python3\_projects\SmartTerminal\Ver5\wiki_etc\Python Smart Terminal - OpenCircuits.pdf"
@@ -1142,8 +1226,8 @@ class Parameters( object ):
         self.ext_processing_module      = None
         self.ext_processing_class       = None
 
-        self.get_cpu_temp               = False
-        self.no_temps                   = 0     # temperature values
+        self.get_cpu_temp               = False   # some applications will fetch the cpu temperature most ignore this
+        self.no_temps                   = 0       # temperature values
         self.no_humids                  = 0
         self.no_lights                  = 0
         self.no_doors                   = 0
@@ -1182,7 +1266,7 @@ class Parameters( object ):
 
         # file name for the python logging
         self.pylogging_fn      = "smart_terminal.py_log"        # file name for the python logging will be in the terminal directory
-        self.comm_logging_fn    = "smart_terminal_comm.log"      # or the name of a file    None    "smart_terminal_comm.log"
+        self.comm_logging_fn   = "smart_terminal_comm.log"      # or the name of a file    None    "smart_terminal_comm.log"
 
 
         # python logging level of severity for message to be logged
@@ -1191,6 +1275,7 @@ class Parameters( object ):
 
         self.print_to_log      = False     # not currently implemented
 
+        # ----- end logging
         self.queue_length      = 30
         self.queue_sleep       = .1   # if queue is full we loop with this as delay in sec smart_terminal.py  post_to_queue is one place to look
 
@@ -1310,7 +1395,7 @@ class Parameters( object ):
 
         self.port_last_probe   = None   # use in port probe for last port that worked
 
-        # parameters not managed
+        # parameters of the port not managed by the application
             #timeout – Set a read timeout value.
             #xonxoff – Enable software flow control.
             #rtscts  – Enable hardware (RTS/CTS) flow control.
@@ -1341,7 +1426,7 @@ class Parameters( object ):
     # ----- db on standard local name, move towards working on all my pi's
     def dbLocal( self, ):
         """
-        this is a partial setup for a local connection
+        this is a partial setup for a local connection ( MySQL )
         call as first part of actual full setup where values
         may be modified
         """
@@ -1538,7 +1623,7 @@ class Parameters( object ):
     # -----------------------------------
     def __str__( self,   ):
         """
-        sometimes it is hard to see where values have come out this may help if printed.
+        sometimes it is hard to see where values have come out. This may help if printed.
         not complete, add as needed -- compare across applications
         """
         line_begin  ="\n"
@@ -1548,6 +1633,10 @@ class Parameters( object ):
         #a_str = f"{a_str}\n   snip_file_fn            {self.snip_file_fn}"
         #a_str = f"{a_str}\n   snippets_fn             {self.snippets_fn}"
         a_str = f"{a_str}{line_begin}   ex_editor                {self.ex_editor}"
+
+        a_str = f"{a_str}{line_begin}   --- logging  ---"
+        a_str = f"{a_str}{line_begin}   comm_logging_fn          {self.comm_logging_fn}"
+        a_str = f"{a_str}{line_begin}   pylogging_fn             {self.pylogging_fn}"
         a_str = f"{a_str}{line_begin}   logger_id                {self.logger_id}"
         a_str = f"{a_str}{line_begin}   logging_level            {self.logging_level}"
 
@@ -1578,9 +1667,7 @@ class Parameters( object ):
         # a_str = f"{a_str}{line_begin}   --- misc ---"
 
 
-        a_str = f"{a_str}{line_begin}   --- logging  ---"
-        a_str = f"{a_str}{line_begin}   comm_logging_fn          {self.comm_logging_fn}"
-        a_str = f"{a_str}{line_begin}   pylogging_fn             {self.pylogging_fn}"
+
 
         a_str = f"{a_str}{line_begin}   start_helper_function    {self.start_helper_function}"
 
@@ -1602,6 +1689,14 @@ class Parameters( object ):
         a_str = f"{a_str}{line_begin}   stopbits                 {self.stopbits}"
         a_str = f"{a_str}{line_begin}   recTimeout               {self.recTimeout}"
         a_str = f"{a_str}{line_begin}   port_list                {self.port_list}"
+
+
+        a_str = f"{a_str}{line_begin}   help_file                {self.help_file}"
+        a_str = f"{a_str}{line_begin}   connect                  {self.connect}"
+
+        a_str = f"{a_str}{line_begin}   echoSend                 {self.echoSend}"
+        a_str = f"{a_str}{line_begin}   gt_delta_t               {self.gt_delta_t}"
+        a_str = f"{a_str}{line_begin}   ht_delta_t               {self.ht_delta_t}"
 
 
 

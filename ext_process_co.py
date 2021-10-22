@@ -2,7 +2,7 @@
 
 import logging
 import abc_def
-import Tkinter as Tk
+import tkinter as Tk
 
 # -------------- local imports  ------------------
 
